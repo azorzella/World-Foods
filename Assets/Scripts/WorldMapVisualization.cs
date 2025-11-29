@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WorldMapVisualization : MonoBehaviour {
     readonly Dictionary<string, List<VisListener>> listeners = new();
@@ -110,7 +111,10 @@ public class WorldMapVisualization : MonoBehaviour {
     }
 
     void Update() {
-        if (Keyboard.current.fKey.wasPressedThisFrame) {
+        if (Keyboard.current.cKey.wasPressedThisFrame) {
+            dishLog.Clear();
+            TestDishVisualization();
+        } else if (Keyboard.current.aKey.wasPressedThisFrame) {
             TestDishVisualization();
         }
     }
