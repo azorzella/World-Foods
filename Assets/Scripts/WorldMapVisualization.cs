@@ -77,12 +77,24 @@ public class WorldMapVisualization : MonoBehaviour {
     }
     
     void ForceNotifyListeners() {
-        int totalDishesInLog = dishLog.Count;
+        int dishesFromCountryWithMostDishesInLog = 0;
+
+        Dictionary<string, int> numDishesFromCountries = new();
         
         foreach (var pair in DishCatalogue.isoCodes) {
             string isoCode = pair.Value;
             int numDishesFromCountry = CountDishesFromCountryInLog(isoCode);
-            float percentage = (float)numDishesFromCountry / totalDishesInLog;
+
+            if (numDishesFromCountry > dishesFromCountryWithMostDishesInLog) {
+                dishesFromCountryWithMostDishesInLog = numDishesFromCountry;
+            }
+
+            numDishesFromCountries.Add(isoCode, numDishesFromCountry);
+        }
+        
+        foreach (var pair in DishCatalogue.isoCodes) {
+            string isoCode = pair.Value;
+            float percentage = (float)numDishesFromCountries[isoCode] / dishesFromCountryWithMostDishesInLog;
             
             SetValue(isoCode, percentage);
         }
