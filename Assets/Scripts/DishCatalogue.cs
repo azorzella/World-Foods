@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 using System.IO;
 using UnityEngine;
 using System.Text.RegularExpressions;
@@ -23,6 +24,12 @@ public class DishCatalogue {
 	static readonly List<Dish> dishes = new();
 	static readonly Dictionary<string, string> isoCodes = new();
 
+	public Dish GetDishCalled(string dishName) {
+		Dish result = Array.Find(dishes.ToArray(), dish => dish.GetName().ToLower() == dishName.ToLower());
+		
+		return result;
+	}
+	
 	static void ParseIsoCodes() {
 		string contents = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "", "iso_codes.csv"));
 
