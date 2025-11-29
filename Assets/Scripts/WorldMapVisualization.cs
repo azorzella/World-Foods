@@ -99,9 +99,19 @@ public class WorldMapVisualization : MonoBehaviour {
             SetValue(isoCode, percentage);
         }
     }
-    
-    void Start() {
+
+    void TestDishVisualization() {
         RandomlyPopulateDishLog();
         ForceNotifyListeners();
+    }
+
+    void Start() {
+        TestDishVisualization();
+    }
+
+    void Update() {
+        if (Keyboard.current.fKey.wasPressedThisFrame) {
+            TestDishVisualization();
+        }
     }
 }
