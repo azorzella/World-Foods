@@ -22,7 +22,7 @@ public class DishCatalogue {
 	}
 	
 	static readonly List<Dish> dishes = new();
-	static readonly Dictionary<string, string> isoCodes = new();
+	public static readonly Dictionary<string, string> isoCodes = new();
 
 	public Dish GetDishCalled(string dishName) {
 		Dish result = Array.Find(dishes.ToArray(), dish => dish.GetName().ToLower() == dishName.ToLower());

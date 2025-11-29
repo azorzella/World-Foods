@@ -41,6 +41,18 @@ public class WorldMapVisualization : MonoBehaviour {
         NotifyListeners(isoCode);        
     }
 
+    int CountDishesFromCountryInLog(string isoCode) {
+        int result = 0;
+
+        foreach (var dish in dishLog) {
+            if (dish.GetIsoCode() == isoCode) {
+                result++;
+            }
+        }
+        
+        return result;
+    }
+    
     readonly List<Dish> dishLog = new();
 
     void RandomlyPopulateDishLog() {
@@ -53,13 +65,27 @@ public class WorldMapVisualization : MonoBehaviour {
                 for (int c = 0; c < UnityEngine.Random.Range(10, 20); c++) {
                     dishLog.Add(dish);
                 }
-            } else {
+            }
+            else {
                 dishLog.Add(dish);
             }
         }
     }
     
+    void ForceNotifyListeners() {
+        int totalDishesInLog = dishLog.Count;
+        
+        foreach (var pair in DishCatalogue.isoCodes) {
+            string isoCode = pair.Key;
+            int numDishesFromCountry = CountDishesFromCountryInLog(isoCode);
+            float percentage = (float)numDishesFromCountry / totalDishesInLog;
+            
+            SetValue(isoCode, percentage);
+        }
+    }
+    
     void Start() {
         RandomlyPopulateDishLog();
+        ForceNotifyListeners();
     }
 }
