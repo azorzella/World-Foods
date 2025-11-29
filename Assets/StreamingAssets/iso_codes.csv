@@ -49,7 +49,7 @@ Cocos (Keeling) Islands,CC,CCK,166,ISO 3166-2:CC
 Colombia,CO,COL,170,ISO 3166-2:CO
 Comoros,KM,COM,174,ISO 3166-2:KM
 Congo,CG,COG,178,ISO 3166-2:CG
-"Congo, the Democratic Republic of the",CD,COD,180,ISO 3166-2:CD
+Democratic Republic of the Congo,CD,COD,180,ISO 3166-2:CD
 Cook Islands,CK,COK,184,ISO 3166-2:CK
 Costa Rica,CR,CRI,188,ISO 3166-2:CR
 Côte d'Ivoire,CI,CIV,384,ISO 3166-2:CI
@@ -230,8 +230,8 @@ Tuvalu,TV,TUV,798,ISO 3166-2:TV
 Uganda,UG,UGA,800,ISO 3166-2:UG
 Ukraine,UA,UKR,804,ISO 3166-2:UA
 United Arab Emirates,AE,ARE,784,ISO 3166-2:AE
-United Kingdom,GB,GBR,826,ISO 3166-2:GB
-USA,US,USA,840,ISO 3166-2:US
+United Kingdom (UK),GB,GBR,826,ISO 3166-2:GB
+United States of America (USA),US,USA,840,ISO 3166-2:US
 United States Minor Outlying Islands,UM,UMI,581,ISO 3166-2:UM
 Uruguay,UY,URY,858,ISO 3166-2:UY
 Uzbekistan,UZ,UZB,860,ISO 3166-2:UZ

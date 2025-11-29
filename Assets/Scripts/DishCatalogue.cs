@@ -59,39 +59,45 @@ public class DishCatalogue {
 	}
 	
 	static void ParseDishes() {
-		HashSet<string> dishNames = new();
-		
-		string contents = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "", "global_street_food.csv"));
+		string contents = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "", "dishes.tsv"));
 
 		string[] lines = contents.Split('\n');
 
 		for (int i = 1; i < lines.Length; i++) {
 			string line = lines[i];
-			
+
 			if (string.IsNullOrWhiteSpace(line)) {
 				continue;
 			}
-			
-			string[] split = line.Split(',');
 
-			string dishName = split[0];
-			string dishCountry = split[1];
+			string[] split = line.Split('\t');
 
-			dishCountry = dishCountry.ToLower();
-			dishCountry = Regex.Replace(dishCountry, @"\s+", "");
-			
-			string isoCode = "";
-
-			if (!isoCodes.ContainsKey(dishCountry) || dishNames.Contains(dishName)) {
+			if (split.Length < 6) {
+				Debug.Log($"Skipping line '{line}' as it seems to be incorrectly formatted or not have enough data.");
 				continue;
 			}
+			
+			string dishName = split[2];
+			
+			string dishCountries = split[5];
 
-			isoCode = isoCodes[dishCountry];
+			string[] dishCountriesSplit = dishCountries.Split(',');
+
+			foreach (var country in dishCountriesSplit) {
+				string dishCountry = country.ToLower();
+				dishCountry = Regex.Replace(dishCountry, @"\s+", "");
 			
-			Dish newDish = new Dish(dishName, isoCode);
-			dishes.Add(newDish);
+				string isoCode = "";
+
+				if (!isoCodes.ContainsKey(dishCountry)) {
+					continue;
+				}
+
+				isoCode = isoCodes[dishCountry];
 			
-			dishNames.Add(dishName);
+				Dish newDish = new Dish(dishName, isoCode);
+				dishes.Add(newDish);
+			}
 		}
 	}
 }
