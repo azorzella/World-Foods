@@ -29,4 +29,15 @@ public class WorldMapVisualization : MonoBehaviour {
             }
         }
     }
+
+    public void SetValue(string isoCode, float value) {
+        if (!values.ContainsKey(isoCode)) {
+            values.Add(isoCode, value);
+        }
+        else {
+            values[isoCode] = value;
+        }
+
+        NotifyListeners(isoCode);        
+    }
 }
