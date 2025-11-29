@@ -80,7 +80,7 @@ public class WorldMapVisualization : MonoBehaviour {
         int totalDishesInLog = dishLog.Count;
         
         foreach (var pair in DishCatalogue.isoCodes) {
-            string isoCode = pair.Key;
+            string isoCode = pair.Value;
             int numDishesFromCountry = CountDishesFromCountryInLog(isoCode);
             float percentage = (float)numDishesFromCountry / totalDishesInLog;
             
