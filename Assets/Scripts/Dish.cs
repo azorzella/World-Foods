@@ -14,4 +14,8 @@ public class Dish {
     public string GetIsoCode() {
         return isoCode;
     }
+
+    public override string ToString() {
+        return $"{name} ({isoCode})";
+    }
 }
