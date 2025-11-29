@@ -29,6 +29,10 @@ public class DishCatalogue {
 		
 		return result;
 	}
+
+	public Dish GetRandomDish() {
+		return dishes[UnityEngine.Random.Range(0, dishes.Count)];
+	}
 	
 	static void ParseIsoCodes() {
 		string contents = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "", "iso_codes.csv"));

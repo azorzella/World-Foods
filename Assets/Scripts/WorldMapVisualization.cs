@@ -41,7 +41,25 @@ public class WorldMapVisualization : MonoBehaviour {
         NotifyListeners(isoCode);        
     }
 
+    readonly List<Dish> dishLog = new();
+
+    void RandomlyPopulateDishLog() {
+        for (int i = 0; i < 100; ++i) {
+            bool addMultiple = UnityEngine.Random.Range(0F, 1F) > 0.9F;
+
+            Dish dish = DishCatalogue.i.GetRandomDish();
+
+            if (addMultiple) {
+                for (int c = 0; c < UnityEngine.Random.Range(10, 20); c++) {
+                    dishLog.Add(dish);
+                }
+            } else {
+                dishLog.Add(dish);
+            }
+        }
+    }
+    
     void Start() {
-        DishCatalogue foo = DishCatalogue.i;
+        RandomlyPopulateDishLog();
     }
 }
