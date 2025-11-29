@@ -59,6 +59,8 @@ public class DishCatalogue {
 	}
 	
 	static void ParseDishes() {
+		HashSet<string> dishNames = new();
+		
 		string contents = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "", "global_street_food.csv"));
 
 		string[] lines = contents.Split('\n');
@@ -80,14 +82,16 @@ public class DishCatalogue {
 			
 			string isoCode = "";
 
-			if (isoCodes.ContainsKey(dishCountry)) {
-				isoCode = isoCodes[dishCountry];
-			} else {
+			if (!isoCodes.ContainsKey(dishCountry) || dishNames.Contains(dishName)) {
 				continue;
 			}
 
+			isoCode = isoCodes[dishCountry];
+			
 			Dish newDish = new Dish(dishName, isoCode);
 			dishes.Add(newDish);
+			
+			dishNames.Add(dishName);
 		}
 	}
 }
