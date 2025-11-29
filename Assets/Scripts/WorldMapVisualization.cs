@@ -40,4 +40,8 @@ public class WorldMapVisualization : MonoBehaviour {
 
         NotifyListeners(isoCode);        
     }
+
+    void Start() {
+        
+    }
 }

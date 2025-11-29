@@ -3,19 +3,19 @@ using System.IO;
 using UnityEngine;
 using System.Text.RegularExpressions;
 
-public class DishParser {
-	static DishParser _i;
+public class DishCatalogue {
+	static DishCatalogue _i;
 	
-	public static DishParser i {
+	public static DishCatalogue i {
 		get {
 			if (_i == null) {
-				_i = new DishParser();
+				_i = new DishCatalogue();
 			}
 			return _i;
 		}
 	}
 
-	DishParser() {
+	DishCatalogue() {
 		ParseIsoCodes();
 		ParseDishes();
 	}
