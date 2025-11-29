@@ -28,9 +28,9 @@ public class DishCatalogue {
 
 		string[] lines = contents.Split('\n');
 
-		for (int i = 0; i < lines.Length; i++) {
+		for (int i = 1; i < lines.Length; i++) {
 			string line = lines[i];
-			string[] split = line.Split('\t');
+			string[] split = line.Split(',');
 
 			string countryName = split[0];
 			string isoCode = split[1];
@@ -47,9 +47,9 @@ public class DishCatalogue {
 
 		string[] lines = contents.Split('\n');
 
-		for (int i = 0; i < lines.Length; i++) {
+		for (int i = 1; i < lines.Length; i++) {
 			string line = lines[i];
-			string[] split = line.Split('\t');
+			string[] split = line.Split(',');
 
 			string dishName = split[0];
 			string dishCountry = split[1];
