@@ -21,6 +21,10 @@ public class WorldMapVisualization : MonoBehaviour {
     }
 
     public void NotifyListeners(string isoCode) {
+        if (!listeners.ContainsKey(isoCode)) {
+            return;
+        }
+        
         foreach (var listener in listeners[isoCode]) {
             if (values.ContainsKey(isoCode)) {
                 listener.OnValueChanged(values[isoCode]);
