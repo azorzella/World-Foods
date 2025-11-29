@@ -99,5 +99,41 @@ public class DishCatalogue {
 				dishes.Add(newDish);
 			}
 		}
+		
+		contents = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "", "wikipedia_dishes.tsv"));
+
+		lines = contents.Split('\n');
+
+		for (int i = 1; i < lines.Length; i++) {
+			string line = lines[i];
+
+			if (string.IsNullOrWhiteSpace(line)) {
+				continue;
+			}
+
+			string[] split = line.Split('\t');
+
+			if (split.Length < 4) {
+				Debug.LogWarning($"Skipping line '{line}' as it seems to be incorrectly formatted or not have enough data.");
+				continue;
+			}
+			
+			string dishName = split[1];
+			
+			string dishCountry = split[3];
+			dishCountry = dishCountry.ToLower();
+			dishCountry = Regex.Replace(dishCountry, @"\s+", "");
+		
+			string isoCode = "";
+
+			if (!isoCodes.ContainsKey(dishCountry)) {
+				continue;
+			}
+
+			isoCode = isoCodes[dishCountry];
+		
+			Dish newDish = new Dish(dishName, isoCode);
+			dishes.Add(newDish);
+		}
 	}
 }
