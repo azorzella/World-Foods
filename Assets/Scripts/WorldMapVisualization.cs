@@ -49,7 +49,7 @@ public class WorldMapVisualization : MonoBehaviour {
         int result = 0;
 
         foreach (var dish in dishLog) {
-            if (dish.GetIsoCode() == isoCode) {
+            if (dish.GetIsoCode().ToLower() == isoCode.ToLower()) {
                 result++;
             }
         }
