@@ -21,6 +21,6 @@ public class CountryObject : MonoBehaviour, VisListener {
 
         Color newColor = VisualizationProfile.i.colorGradient.Evaluate(newValue);
 
-        LeanTween.color(gameObject, newColor, VisualizationProfile.colorShiftRate);
+        LeanTween.color(gameObject, newColor, VisualizationProfile.colorShiftRate).setEase(LeanTweenType.easeOutCubic);
     }
 }
