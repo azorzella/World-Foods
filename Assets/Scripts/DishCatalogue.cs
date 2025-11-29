@@ -30,6 +30,11 @@ public class DishCatalogue {
 
 		for (int i = 1; i < lines.Length; i++) {
 			string line = lines[i];
+
+			if (string.IsNullOrWhiteSpace(line)) {
+				continue;
+			}
+			
 			string[] split = line.Split(',');
 
 			string countryName = split[0];
@@ -49,6 +54,11 @@ public class DishCatalogue {
 
 		for (int i = 1; i < lines.Length; i++) {
 			string line = lines[i];
+			
+			if (string.IsNullOrWhiteSpace(line)) {
+				continue;
+			}
+			
 			string[] split = line.Split(',');
 
 			string dishName = split[0];
