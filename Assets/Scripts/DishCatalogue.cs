@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 using System.IO;
 using UnityEngine;
 using System.Text.RegularExpressions;
@@ -21,8 +22,18 @@ public class DishCatalogue {
 	}
 	
 	static readonly List<Dish> dishes = new();
-	static readonly Dictionary<string, string> isoCodes = new();
+	public static readonly Dictionary<string, string> isoCodes = new();
 
+	public Dish GetDishCalled(string dishName) {
+		Dish result = Array.Find(dishes.ToArray(), dish => dish.GetName().ToLower() == dishName.ToLower());
+		
+		return result;
+	}
+
+	public Dish GetRandomDish() {
+		return dishes[UnityEngine.Random.Range(0, dishes.Count)];
+	}
+	
 	static void ParseIsoCodes() {
 		string contents = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "", "iso_codes.csv"));
 
@@ -48,33 +59,79 @@ public class DishCatalogue {
 	}
 	
 	static void ParseDishes() {
-		string contents = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "", "global_street_food.csv"));
+		string contents = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "", "dishes.tsv"));
 
 		string[] lines = contents.Split('\n');
 
 		for (int i = 1; i < lines.Length; i++) {
 			string line = lines[i];
-			
+
 			if (string.IsNullOrWhiteSpace(line)) {
 				continue;
 			}
+
+			string[] split = line.Split('\t');
+
+			if (split.Length < 6) {
+				Debug.LogWarning($"Skipping line '{line}' as it seems to be incorrectly formatted or not have enough data.");
+				continue;
+			}
 			
-			string[] split = line.Split(',');
-
-			string dishName = split[0];
-			string dishCountry = split[1];
-
-			dishCountry = dishCountry.ToLower();
-			dishCountry = Regex.Replace(dishCountry, @"\s+", "");
+			string dishName = split[2];
 			
-			string isoCode = "";
+			string dishCountries = split[5];
 
-			if (isoCodes.ContainsKey(dishCountry)) {
+			string[] dishCountriesSplit = dishCountries.Split(',');
+
+			foreach (var country in dishCountriesSplit) {
+				string dishCountry = country.ToLower();
+				dishCountry = Regex.Replace(dishCountry, @"\s+", "");
+			
+				string isoCode = "";
+
+				if (!isoCodes.ContainsKey(dishCountry)) {
+					continue;
+				}
+
 				isoCode = isoCodes[dishCountry];
-			} else {
+			
+				Dish newDish = new Dish(dishName, isoCode);
+				dishes.Add(newDish);
+			}
+		}
+		
+		contents = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "", "wikipedia_dishes.tsv"));
+
+		lines = contents.Split('\n');
+
+		for (int i = 1; i < lines.Length; i++) {
+			string line = lines[i];
+
+			if (string.IsNullOrWhiteSpace(line)) {
 				continue;
 			}
 
+			string[] split = line.Split('\t');
+
+			if (split.Length < 4) {
+				Debug.LogWarning($"Skipping line '{line}' as it seems to be incorrectly formatted or not have enough data.");
+				continue;
+			}
+			
+			string dishName = split[1];
+			
+			string dishCountry = split[3];
+			dishCountry = dishCountry.ToLower();
+			dishCountry = Regex.Replace(dishCountry, @"\s+", "");
+		
+			string isoCode = "";
+
+			if (!isoCodes.ContainsKey(dishCountry)) {
+				continue;
+			}
+
+			isoCode = isoCodes[dishCountry];
+		
 			Dish newDish = new Dish(dishName, isoCode);
 			dishes.Add(newDish);
 		}
