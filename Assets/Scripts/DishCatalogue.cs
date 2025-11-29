@@ -64,6 +64,9 @@ public class DishCatalogue {
 			string dishName = split[0];
 			string dishCountry = split[1];
 
+			dishCountry = dishCountry.ToLower();
+			dishCountry = Regex.Replace(dishCountry, @"\s+", "");
+			
 			string isoCode = "";
 
 			if (isoCodes.ContainsKey(dishCountry)) {
