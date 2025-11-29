@@ -73,7 +73,7 @@ public class DishCatalogue {
 			string[] split = line.Split('\t');
 
 			if (split.Length < 6) {
-				Debug.Log($"Skipping line '{line}' as it seems to be incorrectly formatted or not have enough data.");
+				Debug.LogWarning($"Skipping line '{line}' as it seems to be incorrectly formatted or not have enough data.");
 				continue;
 			}
 			
