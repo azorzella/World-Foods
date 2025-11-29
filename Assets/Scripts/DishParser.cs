@@ -1,13 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEngine;
-
-public class Dish {
-	readonly string name;
-	readonly string isoCode;
-}
+using System.Text.RegularExpressions;
 
 public class DishParser {
 	static DishParser _i;
@@ -38,8 +32,13 @@ public class DishParser {
 			string line = lines[i];
 			string[] split = line.Split('\t');
 
-			string dishName = split[0];
-			string dishCountry = split[1];
+			string countryName = split[0];
+			string isoCode = split[1];
+
+			countryName = countryName.ToLower();
+			countryName = Regex.Replace(countryName, @"\s+", "");
+			
+			isoCodes.Add(countryName, isoCode);
 		}
 	}
 	
@@ -54,6 +53,17 @@ public class DishParser {
 
 			string dishName = split[0];
 			string dishCountry = split[1];
+
+			string isoCode = "";
+
+			if (isoCodes.ContainsKey(dishCountry)) {
+				isoCode = isoCodes[dishCountry];
+			} else {
+				continue;
+			}
+
+			Dish newDish = new Dish(dishName, isoCode);
+			dishes.Add(newDish);
 		}
 	}
 }
