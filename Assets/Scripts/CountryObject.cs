@@ -17,6 +17,10 @@ public class CountryObject : MonoBehaviour, VisListener {
     }
 
     public void OnValueChanged(float newValue) {
-         renderer.material.color = VisualizationProfile.i.colorGradient.Evaluate(newValue);
+        LeanTween.cancel(gameObject);
+
+        Color newColor = VisualizationProfile.i.colorGradient.Evaluate(newValue);
+
+        LeanTween.color(gameObject, newColor, VisualizationProfile.colorShiftRate);
     }
 }

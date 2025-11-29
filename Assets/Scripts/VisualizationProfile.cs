@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class VisualizationProfile : MonoBehaviour {
     public Gradient colorGradient;
+    public const float colorShiftRate = 1F;
     
     static VisualizationProfile _i;
 
