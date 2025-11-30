@@ -53,7 +53,7 @@ public class DishCatalogue {
 		ParseIsoCodes();
 
 		ParseDishesFromFile("dishes.tsv", 2, 5);
-		ParseDishesFromFile("wikipedia_dishes.tsv", 1, 3);
+		ParseDishesFromFile("wikipedia_dishes.tsv", 0, 1);
 	}
 	
 	static void ParseIsoCodes() {
