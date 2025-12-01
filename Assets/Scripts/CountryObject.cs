@@ -6,7 +6,7 @@ public interface VisListener {
 }
 
 public class CountryObject : MonoBehaviour, VisListener {
-    static readonly Color defaultColor = new Color(123, 181, 172);
+    static readonly Color defaultColor = new Color(0.4608599F, 0.7672955F, 0.7201515F);
     
     string isoCode;
 
