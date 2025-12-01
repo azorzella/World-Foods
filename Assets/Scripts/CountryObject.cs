@@ -6,6 +6,8 @@ public interface VisListener {
 }
 
 public class CountryObject : MonoBehaviour, VisListener {
+    static readonly Color defaultColor = new Color(123, 181, 172);
+    
     string isoCode;
 
     Renderer renderer;
@@ -19,7 +21,7 @@ public class CountryObject : MonoBehaviour, VisListener {
     public void OnValueChanged(float newValue) {
         LeanTween.cancel(gameObject);
 
-        Color newColor = VisualizationProfile.i.colorGradient.Evaluate(newValue);
+        Color newColor = newValue > 0 ? VisualizationProfile.i.colorGradient.Evaluate(newValue) : defaultColor;
 
         LeanTween.color(gameObject, newColor, VisualizationProfile.colorShiftRate).setEase(LeanTweenType.easeOutCubic);
     }
