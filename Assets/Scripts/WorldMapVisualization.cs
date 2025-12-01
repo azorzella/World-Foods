@@ -95,7 +95,13 @@ public class WorldMapVisualization : MonoBehaviour {
         
         foreach (var pair in DishCatalogue.isoCodes) {
             string isoCode = pair.Value;
-            float percentage = (float)numDishesFromCountries[isoCode] / dishesFromCountryWithMostDishesInLog;
+            float percentage = 0;
+
+            int numDishes = numDishesFromCountries[isoCode];
+
+            if (numDishes > 0) {
+                percentage = (float)numDishes / dishesFromCountryWithMostDishesInLog;
+            }
             
             SetValue(isoCode, percentage);
         }
