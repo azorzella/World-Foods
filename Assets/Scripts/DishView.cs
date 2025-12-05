@@ -45,6 +45,7 @@ public class DishView : MonoBehaviour {
         foreach (var dish in dishes) {
             newEntry = Instantiate(dishEntry, parentEntriesTo);
             newEntry.GetComponent<DishEntry>().Initialize(dish);
+            entries.Add(newEntry);
         }
 
         int dishCount = dishes.Count;
