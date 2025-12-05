@@ -220,6 +220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 540049457363230672}
+  - component: {fileID: 2270844205962016930}
   m_Layer: 5
   m_Name: DishEntry
   m_TagString: Untagged
@@ -248,3 +249,15 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1014.8, y: 204.8821}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2270844205962016930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9072607247448270192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b834ed61bc404158a8d48b09a62000cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
