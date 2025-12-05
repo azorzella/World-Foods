@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using Vector2 = UnityEngine.Vector2;
 
 public class Interaction : MonoBehaviour {
@@ -9,7 +7,7 @@ public class Interaction : MonoBehaviour {
 
     WorldMapVisualization vis;
 
-    public Transform currentViewLocation;
+    public Transform cameraTarget;
     
     void Start() {
         camera = Camera.main;
@@ -33,10 +31,10 @@ public class Interaction : MonoBehaviour {
     
     public void OnDrag(InputAction.CallbackContext context) {
         if (!DishView.i.IsVisible()) {
-            Vector2 currentPosition = currentViewLocation.position;
+            Vector2 currentPosition = cameraTarget.position;
 
             currentPosition += context.ReadValue<Vector2>();
-            currentViewLocation.position = new Vector2(Mathf.Clamp(currentPosition.x, -clampX, clampX), 0);
+            cameraTarget.position = new Vector2(Mathf.Clamp(currentPosition.x, -clampX, clampX), 0);
         }        
     }
 }

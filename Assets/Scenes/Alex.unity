@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothTime: 0.5
-  target: {fileID: 0}
+  target: {fileID: 440806791}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -23423,7 +23423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427c6159b12b46f4db2af692e253eede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentViewLocation: {fileID: 0}
+  currentViewLocation: {fileID: 440806791}
 --- !u!114 &5696102134027274714
 MonoBehaviour:
   m_ObjectHideFlags: 0
