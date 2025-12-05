@@ -18,6 +18,7 @@ public class Interaction : MonoBehaviour {
 
             if (Physics.Raycast(ray, out var hit)) {
                 string isoCode = hit.transform.name;
+                Debug.Log(isoCode);
                 
                 DishView.i.OpenDisplaying(vis.GetLoggedDishesFromCountry(isoCode));
             }

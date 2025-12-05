@@ -13,6 +13,7 @@ public class DishView : MonoBehaviour {
                 DishView obj = Resources.Load<DishView>("DishView");
 
                 _i = Instantiate(obj);
+                _i.CacheComponents();
             }
             return _i;
         }
@@ -26,7 +27,6 @@ public class DishView : MonoBehaviour {
     VerticalLayoutGroup layoutGroup;
 
     void Start() {
-        CacheComponents();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -48,11 +48,13 @@ public class DishView : MonoBehaviour {
         }
 
         int dishCount = dishes.Count;
-        
-        Vector2 newSize = new Vector2(
-            parentEntriesTo.sizeDelta.x,
-            newEntry.GetComponent<RectTransform>().rect.height * dishCount + layoutGroup.spacing * dishCount);
-        parentEntriesTo.sizeDelta = newSize;
+
+        if (dishCount > 0) {
+            Vector2 newSize = new Vector2(
+                parentEntriesTo.sizeDelta.x,
+                newEntry.GetComponent<RectTransform>().rect.height * dishCount + layoutGroup.spacing * dishCount);
+            parentEntriesTo.sizeDelta = newSize;    
+        }
         
         SetVisible(true);
     }
