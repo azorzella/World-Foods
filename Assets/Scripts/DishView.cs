@@ -55,7 +55,7 @@ public class DishView : MonoBehaviour {
         if (dishCount > 0) {
             Vector2 newSize = new Vector2(
                 parentEntriesTo.sizeDelta.x,
-                newEntry.GetComponent<RectTransform>().sizeDelta.y * (dishCount + 1) + layoutGroup.spacing * dishCount);
+                newEntry.GetComponent<RectTransform>().sizeDelta.y * dishCount + layoutGroup.spacing * dishCount);
             parentEntriesTo.sizeDelta = newSize;    
         }
         
