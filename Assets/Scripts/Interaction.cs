@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class Interaction : MonoBehaviour {
     Camera camera;
