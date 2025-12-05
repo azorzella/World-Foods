@@ -28,7 +28,7 @@ public class Interaction : MonoBehaviour {
     }
 
     const float clampX = 10;
-    const float sensitivity = 0.2F;
+    const float sensitivity = 0.01F;
     
     public void OnDrag(InputAction.CallbackContext context) {
         if (!DishView.i.IsVisible()) {

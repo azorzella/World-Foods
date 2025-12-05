@@ -47,17 +47,6 @@
                     "action": "Drag",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "dd8bb8a5-8d91-4ccc-8f7a-18f75e9c3278",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Drag",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }
