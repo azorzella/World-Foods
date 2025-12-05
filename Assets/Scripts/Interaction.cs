@@ -8,6 +8,8 @@ public class Interaction : MonoBehaviour {
     Camera camera;
 
     WorldMapVisualization vis;
+
+    public Transform currentViewLocation;
     
     void Start() {
         camera = Camera.main;
@@ -25,11 +27,16 @@ public class Interaction : MonoBehaviour {
                 DishView.i.OpenDisplaying(vis.GetLoggedDishesFromCountry(isoCode));
             }
         }
-    }   
+    }
 
+    const float clampX = 10;
+    
     public void OnDrag(InputAction.CallbackContext context) {
         if (!DishView.i.IsVisible()) {
-            Debug.Log(context.ReadValue<Vector2>());
+            Vector2 currentPosition = currentViewLocation.position;
+
+            currentPosition += context.ReadValue<Vector2>();
+            currentViewLocation.position = new Vector2(Mathf.Clamp(currentPosition.x, -clampX, clampX), 0);
         }        
     }
 }
