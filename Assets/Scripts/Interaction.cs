@@ -31,10 +31,10 @@ public class Interaction : MonoBehaviour {
     
     public void OnDrag(InputAction.CallbackContext context) {
         if (!DishView.i.IsVisible()) {
-            Vector2 currentPosition = cameraTarget.position;
+            Vector3 currentPosition = cameraTarget.position;
 
-            currentPosition += context.ReadValue<Vector2>();
-            cameraTarget.position = new Vector2(Mathf.Clamp(currentPosition.x, -clampX, clampX), 0);
+            currentPosition += (Vector3)context.ReadValue<Vector2>();
+            cameraTarget.position = new Vector3(Mathf.Clamp(currentPosition.x, -clampX, clampX), 0, currentPosition.z);
         }        
     }
 }
