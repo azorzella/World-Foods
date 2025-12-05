@@ -81,5 +81,7 @@ public class DishView : MonoBehaviour {
         canvasGroup.alpha = visible ? 1 : 0;
         canvasGroup.interactable = visible;
         canvasGroup.blocksRaycasts = visible;
+        
+        this.visible = visible;
     }
 }
