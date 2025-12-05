@@ -1,8 +1,8 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using Vector2 = UnityEngine.Vector2;
 
 public class Interaction : MonoBehaviour {
     Camera camera;
@@ -16,7 +16,10 @@ public class Interaction : MonoBehaviour {
 
     public void OnClick(InputAction.CallbackContext context) {
         if (!DishView.i.IsVisible()) {
-            Ray ray = camera.ScreenPointToRay(context.ReadValue<Vector2>());
+            // Vector2 position = context.ReadValue<Vector2>();
+            Vector2 position = context.control.device.TryGetChildControl<Vector2Control>("position").ReadValue();
+            
+            Ray ray = camera.ScreenPointToRay(position);
 
             if (Physics.Raycast(ray, out var hit)) {
                 string isoCode = hit.transform.name;
