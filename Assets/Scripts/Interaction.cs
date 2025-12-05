@@ -4,13 +4,13 @@ using Vector2 = UnityEngine.Vector2;
 
 public class Interaction : MonoBehaviour {
     Camera camera;
-
+    Transform cameraTransform;
+    
     WorldMapVisualization vis;
 
-    public Transform cameraTarget;
-    
     void Start() {
         camera = Camera.main;
+        cameraTransform = camera.gameObject.transform;
         vis = FindFirstObjectByType<WorldMapVisualization>();
     }
 
@@ -28,13 +28,14 @@ public class Interaction : MonoBehaviour {
     }
 
     const float clampX = 10;
+    const float sensitivity = 0.2F;
     
     public void OnDrag(InputAction.CallbackContext context) {
         if (!DishView.i.IsVisible()) {
-            Vector2 currentPosition = cameraTarget.position;
+            Vector2 currentPosition = cameraTransform.position;
 
-            currentPosition += context.ReadValue<Vector2>();
-            cameraTarget.position = new Vector2(Mathf.Clamp(currentPosition.x, -clampX, clampX), 0);
+            currentPosition += context.ReadValue<Vector2>() * sensitivity;
+            cameraTransform.position = new Vector3(Mathf.Clamp(currentPosition.x, -clampX, clampX), 0, -10);
         }        
     }
 }
