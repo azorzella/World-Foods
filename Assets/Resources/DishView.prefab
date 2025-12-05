@@ -308,8 +308,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8392516165039766067}
   m_HandleRect: {fileID: 9098692910306224947}
   m_Direction: 2
-  m_Value: 1.0000002
-  m_Size: 0.46149167
+  m_Value: 1.0000004
+  m_Size: 0.46168348
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -748,7 +748,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6763433517691764670}
         m_TargetAssemblyTypeName: DishView, Scripts
         m_MethodName: Close
         m_Mode: 1
