@@ -28,13 +28,13 @@ public class Interaction : MonoBehaviour {
     }
 
     const float clampX = 10;
-    const float sensitivity = 0.01F;
+    const float sensitivity = 0.0025F;
     
     public void OnDrag(InputAction.CallbackContext context) {
         if (!DishView.i.IsVisible()) {
             Vector2 currentPosition = cameraTransform.position;
 
-            currentPosition += context.ReadValue<Vector2>() * sensitivity;
+            currentPosition -= context.ReadValue<Vector2>() * sensitivity;
             cameraTransform.position = new Vector3(Mathf.Clamp(currentPosition.x, -clampX, clampX), 0, -10);
         }        
     }
