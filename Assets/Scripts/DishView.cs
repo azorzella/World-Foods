@@ -70,6 +70,12 @@ public class DishView : MonoBehaviour {
     public void Close() {
         SetVisible(false);
     }
+
+    bool visible;
+
+    public bool IsVisible() {
+        return visible;
+    }
     
     void SetVisible(bool visible) {
         canvasGroup.alpha = visible ? 1 : 0;

@@ -13,7 +13,7 @@ public class Interaction : MonoBehaviour {
     }
 
     void Update() {
-        if (Mouse.current.leftButton.wasPressedThisFrame) {
+        if (!DishView.i.IsVisible() && Mouse.current.leftButton.wasPressedThisFrame) {
             Ray ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
             if (Physics.Raycast(ray, out var hit)) {
