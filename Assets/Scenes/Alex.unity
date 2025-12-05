@@ -23419,13 +23419,21 @@ MonoBehaviour:
     m_ActionId: bedaf62f-1e56-4dc3-b061-1b62ca11a0b3
     m_ActionName: 'User/Click[/Mouse/leftButton]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5696102134027274713}
+        m_TargetAssemblyTypeName: Interaction, Scripts
+        m_MethodName: OnDrag
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: fd29b641-b709-4b35-8260-00b57bc1a087
     m_ActionName: 'User/Drag[/Mouse/delta]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 643e6a69-e130-408a-a125-f2885be4a122
-    m_ActionName: User/TouchPress
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5696102134027274713}

@@ -16,8 +16,7 @@ public class Interaction : MonoBehaviour {
 
     public void OnClick(InputAction.CallbackContext context) {
         if (!DishView.i.IsVisible()) {
-            // Vector2 position = context.ReadValue<Vector2>();
-            Vector2 position = context.control.device.TryGetChildControl<Vector2Control>("position").ReadValue();
+            Vector2 position = context.ReadValue<Vector2>();
             
             Ray ray = camera.ScreenPointToRay(position);
 
