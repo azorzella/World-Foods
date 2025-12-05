@@ -31,6 +31,6 @@ public class PCamera : MonoBehaviour {
         var posY = Mathf.SmoothDamp(transform.position.y, finalPosition.y, ref velocity.y,
             smoothTime);
 
-        transform.position = new Vector2(posX, posY);
+        transform.position = new Vector3(posX, posY, -10);
     }
 }
