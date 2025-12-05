@@ -33,6 +33,8 @@ public class DishView : MonoBehaviour {
     void CacheComponents() {
         canvasGroup = GetComponent<CanvasGroup>();
         layoutGroup = parentEntriesTo.gameObject.GetComponent<VerticalLayoutGroup>();
+        
+        SetVisible(false);
     }
     
     public void OpenDisplaying(List<Dish> dishes) {
