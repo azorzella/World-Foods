@@ -1,0 +1,55 @@
+{
+    "version": 1,
+    "name": "User",
+    "maps": [
+        {
+            "name": "User",
+            "id": "cfb2f17c-7f7e-4dc4-ae99-3f2b9fffe69d",
+            "actions": [
+                {
+                    "name": "Drag",
+                    "type": "Value",
+                    "id": "fd29b641-b709-4b35-8260-00b57bc1a087",
+                    "expectedControlType": "Delta",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Press",
+                    "type": "Value",
+                    "id": "7759fe2e-3b23-4329-bf18-0a7ec8931723",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fe325a60-8ec9-4255-b515-817cdb568dd2",
+                    "path": "<Touchscreen>/primaryTouch/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8a44aa0f-0cba-4d4d-81a1-cb110595bb34",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

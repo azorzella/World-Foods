@@ -124,4 +124,16 @@ public class WorldMapVisualization : MonoBehaviour {
             TestDishVisualization();
         }
     }
+
+    public List<Dish> GetLoggedDishesFromCountry(string isoCode) {
+        List<Dish> result = new();
+
+        foreach (var dish in dishLog) {
+            if (dish.GetIsoCode() == isoCode) {
+                result.Add(dish);
+            }
+        }
+        
+        return result;
+    }
 }
