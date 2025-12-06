@@ -1,6 +1,7 @@
 public class Dish {
     readonly string name;
     readonly string isoCode;
+    int rating = 0;
 
     public Dish(string name, string isoCode) {
         this.name = name;
@@ -13,6 +14,14 @@ public class Dish {
 
     public string GetIsoCode() {
         return isoCode;
+    }
+
+    public int GetRating() {
+        return rating;
+    }
+
+    public void SetRating(int newRating) {
+        this.rating = newRating;
     }
 
     public override string ToString() {
