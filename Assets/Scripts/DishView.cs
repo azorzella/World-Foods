@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting.TextureAssets;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class DishView : MonoBehaviour {
@@ -20,7 +21,8 @@ public class DishView : MonoBehaviour {
     }
     
     public RectTransform parentEntriesTo;
-
+    [FormerlySerializedAs("ratingPanelCanvasGroup")] public RatingMenu ratingMenu;
+    
     readonly List<GameObject> entries = new();
 
     CanvasGroup canvasGroup;
@@ -34,7 +36,8 @@ public class DishView : MonoBehaviour {
         canvasGroup = GetComponent<CanvasGroup>();
         layoutGroup = parentEntriesTo.gameObject.GetComponent<VerticalLayoutGroup>();
         
-        SetVisible(false);
+        SetSelfVisible(false);
+        HideRatingPanel();
     }
     
     public void OpenDisplaying(List<Dish> dishes) {
@@ -46,7 +49,7 @@ public class DishView : MonoBehaviour {
         
         foreach (var dish in dishes) {
             newEntry = Instantiate(dishEntry, parentEntriesTo);
-            newEntry.GetComponent<DishEntry>().Initialize(dish);
+            newEntry.GetComponent<DishEntry>().Initialize(this, dish);
             entries.Add(newEntry);
         }
 
@@ -59,7 +62,7 @@ public class DishView : MonoBehaviour {
             parentEntriesTo.sizeDelta = newSize;    
         }
         
-        SetVisible(true);
+        SetSelfVisible(true);
     }
     
     void Clear() {
@@ -70,7 +73,7 @@ public class DishView : MonoBehaviour {
     }
 
     public void Close() {
-        SetVisible(false);
+        SetSelfVisible(false);
     }
 
     bool visible;
@@ -79,11 +82,26 @@ public class DishView : MonoBehaviour {
         return visible;
     }
     
-    void SetVisible(bool visible) {
-        canvasGroup.alpha = visible ? 1 : 0;
-        canvasGroup.interactable = visible;
-        canvasGroup.blocksRaycasts = visible;
-        
+    void SetCanvasGroupVisible(CanvasGroup group, bool visible) {
+        group.alpha = visible ? 1 : 0;
+        group.interactable = visible;
+        group.blocksRaycasts = visible;
+    }
+
+    void SetSelfVisible(bool visible) {
+        SetCanvasGroupVisible(canvasGroup, visible);
         this.visible = visible;
+
+        if (!visible) {
+            HideRatingPanel();
+        }
+    }
+
+    public void ShowRatingPanelFor(Dish dish) {
+        ratingMenu.SetDish(dish);
+    }
+
+    public void HideRatingPanel() {
+        ratingMenu.Hide();
     }
 }
