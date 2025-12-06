@@ -17,10 +17,10 @@ public class DishEntry : MonoBehaviour, IPointerClickHandler {
     }
     
     public void OnPointerClick(PointerEventData eventData) {
-        dishView.SetRatingPanelVisible(true);
+        dishView.ShowRatingPanelFor(dishCache);
     }
 
     public void HideRatingPanel_BucketBrigade() {
-        dishView.SetRatingPanelVisible(false);
+        dishView.HideRatingPanel();
     }
 }
