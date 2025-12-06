@@ -21,7 +21,7 @@ public class DishView : MonoBehaviour {
     }
     
     public RectTransform parentEntriesTo;
-    [FormerlySerializedAs("ratingPanelCanvasGroup")] public RatingMenu ratingMenu;
+    public CanvasGroup ratingPanelCanvasGroup;
     
     readonly List<GameObject> entries = new();
 
@@ -36,15 +36,10 @@ public class DishView : MonoBehaviour {
         canvasGroup = GetComponent<CanvasGroup>();
         layoutGroup = parentEntriesTo.gameObject.GetComponent<VerticalLayoutGroup>();
         
-        SetSelfVisible(false);
-        HideRatingPanel();
+        SetVisible(false);
     }
     
     public void OpenDisplaying(List<Dish> dishes) {
-        if (dishes.Count <= 0) {
-            return;
-        }
-        
         Clear();
 
         GameObject dishEntry = ResourceLoader.LoadObject("DishEntry");
@@ -66,7 +61,7 @@ public class DishView : MonoBehaviour {
             parentEntriesTo.sizeDelta = newSize;    
         }
         
-        SetSelfVisible(true);
+        SetVisible(true);
     }
     
     void Clear() {
@@ -77,7 +72,7 @@ public class DishView : MonoBehaviour {
     }
 
     public void Close() {
-        SetSelfVisible(false);
+        SetVisible(false);
     }
 
     bool visible;
@@ -92,20 +87,12 @@ public class DishView : MonoBehaviour {
         group.blocksRaycasts = visible;
     }
 
-    void SetSelfVisible(bool visible) {
+    void SetVisible(bool visible) {
         SetCanvasGroupVisible(canvasGroup, visible);
         this.visible = visible;
-
-        if (!visible) {
-            HideRatingPanel();
-        }
     }
 
-    public void ShowRatingPanelFor(Dish dish) {
-        ratingMenu.SetDish(dish);
-    }
-
-    public void HideRatingPanel() {
-        ratingMenu.Hide();
+    public void SetRatingPanelVisible(bool visible) {
+        SetCanvasGroupVisible(ratingPanelCanvasGroup, visible);        
     }
 }
