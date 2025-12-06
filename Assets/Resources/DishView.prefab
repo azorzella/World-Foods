@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 8433244623898558503}
   - component: {fileID: 1322120999031102398}
   - component: {fileID: 276373615596534643}
-  - component: {fileID: 1263995448802828356}
   m_Layer: 5
-  m_Name: Star (1)
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,18 +75,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1263995448802828356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 304322698915334150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 716d2b9316766e441aa411b763f40062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &408696833488943095
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,8 +355,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6763433517691764670}
         m_TargetAssemblyTypeName: DishView, Scripts
-        m_MethodName: HideRatingPanel
-        m_Mode: 1
+        m_MethodName: SetRatingPanelVisible
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -389,9 +376,8 @@ GameObject:
   - component: {fileID: 2779307688183559504}
   - component: {fileID: 883835640678132661}
   - component: {fileID: 3205414612167557297}
-  - component: {fileID: 9021661124996440813}
   m_Layer: 5
-  m_Name: Star (4)
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -454,18 +440,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9021661124996440813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3232012306093316208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 716d2b9316766e441aa411b763f40062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3460808003234895366
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +488,6 @@ GameObject:
   - component: {fileID: 8313177976977639060}
   - component: {fileID: 3155381027091761657}
   - component: {fileID: 1751523332700155698}
-  - component: {fileID: 455937032558140195}
   m_Layer: 5
   m_Name: RateDish
   m_TagString: Untagged
@@ -594,18 +567,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &455937032558140195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4692724892741728500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe6f31df7a46cc24eb9e1356b3b1e4d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4721153747620613955
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,7 +688,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 9098692910306224947}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.999985
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -851,7 +812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentEntriesTo: {fileID: 1057038027527589341}
-  ratingMenu: {fileID: 455937032558140195}
+  ratingPanelCanvasGroup: {fileID: 1751523332700155698}
 --- !u!225 &1745933271967966001
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -983,9 +944,8 @@ GameObject:
   - component: {fileID: 4247788000852469160}
   - component: {fileID: 5650397506356361177}
   - component: {fileID: 7902257039881636816}
-  - component: {fileID: 626367837150218024}
   m_Layer: 5
-  m_Name: Star (3)
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1048,18 +1008,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &626367837150218024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5947390438873644409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 716d2b9316766e441aa411b763f40062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6017868093721424972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,9 +1155,8 @@ GameObject:
   - component: {fileID: 4179605570462522653}
   - component: {fileID: 7256667902822371467}
   - component: {fileID: 2666485622792544835}
-  - component: {fileID: 547555460486000996}
   m_Layer: 5
-  m_Name: Star (2)
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1272,18 +1219,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &547555460486000996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6733205821994560994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 716d2b9316766e441aa411b763f40062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7173419404921943456
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,9 +1305,8 @@ GameObject:
   - component: {fileID: 867266619559819333}
   - component: {fileID: 8378577957361500607}
   - component: {fileID: 8218052524690720174}
-  - component: {fileID: 1895685734063229734}
   m_Layer: 5
-  m_Name: Star (0)
+  m_Name: 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1435,18 +1369,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1895685734063229734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8095369941839899004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 716d2b9316766e441aa411b763f40062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8167528089780519428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1613,7 +1535,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0005312633}
+  m_AnchoredPosition: {x: 0, y: 0.000885803}
   m_SizeDelta: {x: 0, y: 2340}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6439786140213077238

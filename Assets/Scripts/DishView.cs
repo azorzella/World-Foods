@@ -21,7 +21,7 @@ public class DishView : MonoBehaviour {
     }
     
     public RectTransform parentEntriesTo;
-    [FormerlySerializedAs("ratingPanelCanvasGroup")] public RatingMenu ratingMenu;
+    public CanvasGroup ratingPanelCanvasGroup;
     
     readonly List<GameObject> entries = new();
 
@@ -37,7 +37,7 @@ public class DishView : MonoBehaviour {
         layoutGroup = parentEntriesTo.gameObject.GetComponent<VerticalLayoutGroup>();
         
         SetSelfVisible(false);
-        HideRatingPanel();
+        SetRatingPanelVisible(false);
     }
     
     public void OpenDisplaying(List<Dish> dishes) {
@@ -93,15 +93,11 @@ public class DishView : MonoBehaviour {
         this.visible = visible;
 
         if (!visible) {
-            HideRatingPanel();
+            SetRatingPanelVisible(false);
         }
     }
 
-    public void ShowRatingPanelFor(Dish dish) {
-        ratingMenu.SetDish(dish);
-    }
-
-    public void HideRatingPanel() {
-        ratingMenu.Hide();
+    public void SetRatingPanelVisible(bool visible) {
+        SetCanvasGroupVisible(ratingPanelCanvasGroup, visible);        
     }
 }
