@@ -35,6 +35,22 @@ public class DishCatalogue {
 		return result;
 	}
 
+	public List<Dish> GetDishesWhichContain(string contains) {
+		List<Dish> result = new();
+
+		foreach (Dish dish in dishes) {
+			if (dish.GetName().ToLower() == contains.ToLower()) {
+				result.Add(dish);
+			}
+		}
+
+		return result;
+	}
+
+	public void AddDishToCatalogue(Dish dish) {
+		dishes.Add(dish);
+	}
+
 	public Dish GetRandomDish() {
 		return dishes[UnityEngine.Random.Range(0, dishes.Count)];
 	}

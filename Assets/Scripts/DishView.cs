@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting.TextureAssets;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class DishView : MonoBehaviour {
@@ -20,7 +21,8 @@ public class DishView : MonoBehaviour {
     }
     
     public RectTransform parentEntriesTo;
-
+    public CanvasGroup ratingPanelCanvasGroup;
+    
     readonly List<GameObject> entries = new();
 
     CanvasGroup canvasGroup;
@@ -46,7 +48,7 @@ public class DishView : MonoBehaviour {
         
         foreach (var dish in dishes) {
             newEntry = Instantiate(dishEntry, parentEntriesTo);
-            newEntry.GetComponent<DishEntry>().Initialize(dish);
+            newEntry.GetComponent<DishEntry>().Initialize(this, dish);
             entries.Add(newEntry);
         }
 
@@ -79,11 +81,18 @@ public class DishView : MonoBehaviour {
         return visible;
     }
     
+    void SetCanvasGroupVisible(CanvasGroup group, bool visible) {
+        group.alpha = visible ? 1 : 0;
+        group.interactable = visible;
+        group.blocksRaycasts = visible;
+    }
+
     void SetVisible(bool visible) {
-        canvasGroup.alpha = visible ? 1 : 0;
-        canvasGroup.interactable = visible;
-        canvasGroup.blocksRaycasts = visible;
-        
+        SetCanvasGroupVisible(canvasGroup, visible);
         this.visible = visible;
+    }
+
+    public void SetRatingPanelVisible(bool visible) {
+        SetCanvasGroupVisible(ratingPanelCanvasGroup, visible);        
     }
 }
