@@ -36,7 +36,8 @@ public class DishView : MonoBehaviour {
         canvasGroup = GetComponent<CanvasGroup>();
         layoutGroup = parentEntriesTo.gameObject.GetComponent<VerticalLayoutGroup>();
         
-        SetVisible(false);
+        SetSelfVisible(false);
+        SetRatingPanelVisible(false);
     }
     
     public void OpenDisplaying(List<Dish> dishes) {
@@ -61,7 +62,7 @@ public class DishView : MonoBehaviour {
             parentEntriesTo.sizeDelta = newSize;    
         }
         
-        SetVisible(true);
+        SetSelfVisible(true);
     }
     
     void Clear() {
@@ -72,7 +73,7 @@ public class DishView : MonoBehaviour {
     }
 
     public void Close() {
-        SetVisible(false);
+        SetSelfVisible(false);
     }
 
     bool visible;
@@ -87,9 +88,13 @@ public class DishView : MonoBehaviour {
         group.blocksRaycasts = visible;
     }
 
-    void SetVisible(bool visible) {
+    void SetSelfVisible(bool visible) {
         SetCanvasGroupVisible(canvasGroup, visible);
         this.visible = visible;
+
+        if (!visible) {
+            SetRatingPanelVisible(false);
+        }
     }
 
     public void SetRatingPanelVisible(bool visible) {
