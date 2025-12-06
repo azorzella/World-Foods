@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Vector2 = UnityEngine.Vector2;
 
 public class Interaction : MonoBehaviour {
     Camera camera;
@@ -8,17 +7,35 @@ public class Interaction : MonoBehaviour {
     
     WorldMapVisualization vis;
 
+    Vector2 positionLastPressed;
+
+    UserInput userInput;
+    
     void Start() {
+        userInput = new();
+        userInput.Enable();
+
+        userInput.User.Drag.performed += OnDrag;
+        userInput.User.Press.started += OnPress;
+        userInput.User.Press.canceled += OnRelease;
+        
         camera = Camera.main;
         cameraTransform = camera.gameObject.transform;
         vis = FindFirstObjectByType<WorldMapVisualization>();
     }
+    
+    void OnPress(InputAction.CallbackContext context) {
+        positionLastPressed = Pointer.current.position.ReadValue();
+    }
 
-    public void OnClick(InputAction.CallbackContext context) {
-        if (!DishView.i.IsVisible()) {
-            Vector2 position = context.ReadValue<Vector2>();
-            
-            Ray ray = camera.ScreenPointToRay(position);
+    void OnRelease(InputAction.CallbackContext context) {
+        Vector2 positionLastReleased = Pointer.current.position.ReadValue();
+
+        Vector2 difference = positionLastPressed - positionLastReleased;
+        float magnitude = difference.magnitude;
+        
+        if (!DishView.i.IsVisible() && magnitude < 0.02F) {
+            Ray ray = camera.ScreenPointToRay(positionLastReleased);
 
             if (Physics.Raycast(ray, out var hit)) {
                 string isoCode = hit.transform.name;
@@ -28,9 +45,9 @@ public class Interaction : MonoBehaviour {
     }
 
     const float clampX = 10;
-    const float sensitivity = 0.0025F;
+    const float sensitivity = 0.0045F;
     
-    public void OnDrag(InputAction.CallbackContext context) {
+    void OnDrag(InputAction.CallbackContext context) {
         if (!DishView.i.IsVisible()) {
             Vector2 currentPosition = cameraTransform.position;
 

@@ -1,20 +1,11 @@
 {
     "version": 1,
-    "name": "InputActions",
+    "name": "User",
     "maps": [
         {
             "name": "User",
             "id": "cfb2f17c-7f7e-4dc4-ae99-3f2b9fffe69d",
             "actions": [
-                {
-                    "name": "TouchPosition",
-                    "type": "Value",
-                    "id": "bedaf62f-1e56-4dc3-b061-1b62ca11a0b3",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
                 {
                     "name": "Drag",
                     "type": "Value",
@@ -23,20 +14,18 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Press",
+                    "type": "Value",
+                    "id": "7759fe2e-3b23-4329-bf18-0a7ec8931723",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "28726b74-a3be-4490-b1f7-49963363a0f9",
-                    "path": "<Touchscreen>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TouchPosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "fe325a60-8ec9-4255-b515-817cdb568dd2",
@@ -45,6 +34,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Drag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8a44aa0f-0cba-4d4d-81a1-cb110595bb34",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Press",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
