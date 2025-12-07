@@ -106,4 +106,14 @@ public class DishCatalogue {
 			}
 		}
 	}
+
+	public List<Dish> GetXRandomDishes(int count) {
+		List<Dish> result = new();
+
+		for (int n = 0; n < count; n++) {
+			result.Add(GetRandomDish());
+		}
+		
+		return result;
+	}
 }

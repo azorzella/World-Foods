@@ -20,6 +20,8 @@ public class UserData {
         this.username = username;
         
         firstName = fullName.Split(' ')[0];
+        
+        AddDishes(DishCatalogue.i.GetXRandomDishes(20));
     }
 
     public Dictionary<Dish, int> GetUniqueDishesEaten() {
