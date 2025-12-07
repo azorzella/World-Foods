@@ -419,11 +419,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &570915311660117430 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3163817501551836455, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-  m_PrefabInstance: {fileID: 6407920912971613045}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5027257277213008829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -489,93 +484,133 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 890333531495040939, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890333531495040939, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890333531495040939, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890333531495040939, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890333531495040939, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890333531495040939, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 998912723490152694, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 998912723490152694, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 998912723490152694, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 998912723490152694, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 998912723490152694, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 998912723490152694, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186343459425661080, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346892845616527608, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346892845616527608, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117199825277017762, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_Size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3163817501551836455, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
       propertyPath: m_Name
-      value: AddDishView
+      value: Menu
       objectReference: {fileID: 0}
-    - target: {fileID: 3840802350743636163, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3840802350743636163, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3840802350743636163, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7711820304289154436}
-    - target: {fileID: 3840802350743636163, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3840802350743636163, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LogDish
-      objectReference: {fileID: 0}
-    - target: {fileID: 3840802350743636163, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: AddDishToCountry, Scripts
-      objectReference: {fileID: 0}
-    - target: {fileID: 3840802350743636163, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5330296324346654624, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5330296324346654624, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+    - target: {fileID: 5294909291138789481, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5330296324346654624, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7711820304289154436}
-    - target: {fileID: 5330296324346654624, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5330296324346654624, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EntryFilter
-      objectReference: {fileID: 0}
-    - target: {fileID: 5330296324346654624, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: AddDishToCountry, Scripts
-      objectReference: {fileID: 0}
-    - target: {fileID: 5330296324346654624, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7347463533742790264, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7347463533742790264, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+    - target: {fileID: 5294909291138789481, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7347463533742790264, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7711820304289154436}
-    - target: {fileID: 7347463533742790264, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
+    - target: {fileID: 5294909291138789481, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7347463533742790264, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DishSelected
+    - target: {fileID: 5654772658463514236, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7347463533742790264, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: AddDishToCountry, Scripts
+    - target: {fileID: 5654772658463514236, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7347463533742790264, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+    - target: {fileID: 5654772658463514236, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654772658463514236, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654772658463514236, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654772658463514236, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949015614483126371, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949015614483126371, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949015614483126371, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949015614483126371, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949015614483126371, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949015614483126371, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9106484117937531996, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
       propertyPath: m_Pivot.x
@@ -660,24 +695,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3163817501551836455, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7711820304289154436}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
---- !u!114 &7711820304289154436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 570915311660117430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d58c0d60b4d4af49d02babbaf0f059e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdown: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
