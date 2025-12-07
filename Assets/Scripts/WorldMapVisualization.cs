@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class WorldMapVisualization : MonoBehaviour {
     UserData currentUser = new("Amy Doherty", "amyd");
@@ -34,6 +35,16 @@ public class WorldMapVisualization : MonoBehaviour {
                 listener.OnValueChanged(0);
             }
         }
+    }
+    
+    void Start() {
+        TestDishVisualization();
+        FindFirstObjectByType<SummaryAndSuggestions>().Show(currentUser);
+    }
+    
+    void TestDishVisualization() {
+        RandomlyPopulateDishLog();
+        ForceNotifyListeners();
     }
 
     void SetValueForCountryVisualization(string isoCode, float value) {
@@ -86,15 +97,6 @@ public class WorldMapVisualization : MonoBehaviour {
             
             SetValueForCountryVisualization(isoCode, percentage);
         }
-    }
-
-    void TestDishVisualization() {
-        RandomlyPopulateDishLog();
-        ForceNotifyListeners();
-    }
-
-    void Start() {
-        TestDishVisualization();
     }
 
     public List<Dish> GetLoggedDishesFromCountry(string isoCode) {
