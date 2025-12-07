@@ -13,6 +13,12 @@ public class WorldMapVisualization : MonoBehaviour {
     
     readonly Dictionary<string, List<VisListener>> listeners = new();
     readonly Dictionary<string, float> values = new();
+
+    public void LogDish(Dish dish)
+    {
+        currentUser.AddDishes(dish);
+        ForceNotifyListeners();
+    }
     
     public void RegisterListener(VisListener listener, string isoCode) {
         if (!listeners.ContainsKey(isoCode)) {
@@ -53,6 +59,7 @@ public class WorldMapVisualization : MonoBehaviour {
         currentUser.AddFriends(june, amelia, mona, alex);
         
         ForceNotifyListeners();
+        // FindFirstObjectByType<SummaryAndSuggestions>().Show(currentUser);
     }
     
     void SetValueForCountryVisualization(string isoCode, float value) {

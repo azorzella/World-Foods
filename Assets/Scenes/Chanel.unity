@@ -484,10 +484,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 405960821145429628, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 890333531495040939, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -548,29 +544,13 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2346892845616527608, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3117199825277017762, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_Value
-      value: 0
+      propertyPath: m_Size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3163817501551836455, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
       propertyPath: m_Name
       value: Menu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3277569450636312338, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_text
-      value: Chanel's Duck Sauces
-      objectReference: {fileID: 0}
-    - target: {fileID: 3277569450636312338, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_fontSize
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 3277569450636312338, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5294909291138789481, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -631,18 +611,6 @@ PrefabInstance:
     - target: {fileID: 6949015614483126371, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7347463533742790264, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_Options.m_Options.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7347463533742790264, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_Options.m_Options.Array.data[0].m_Text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7347463533742790264, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_Options.m_Options.Array.data[1].m_Text
-      value: Option C
       objectReference: {fileID: 0}
     - target: {fileID: 9106484117937531996, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
       propertyPath: m_Pivot.x

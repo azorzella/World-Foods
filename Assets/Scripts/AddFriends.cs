@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-{
+// {
     public class AddFriends : MonoBehaviour
     {
-        private readonly List<Users> friendList;
+        // private readonly List<Users> friendList;
         
         readonly List<Dish> filteredResults = new();
         public TMP_Dropdown friendDropdown;
@@ -28,14 +28,14 @@ using UnityEngine;
         
             List<string> filteredFriendNames = new();
         
-            foreach (var f in friends)
-            {
-                if(f.GetName().ToLower().Contains(entry.ToLower()))
-                {
-                    filteredResults.Add(f);
-                    filteredFriendNames.Add(f.GetName());
-                }
-
-            }
+            // foreach (var f in friends)
+            // {
+            //     if(f.GetName().ToLower().Contains(entry.ToLower()))
+            //     {
+            //         filteredResults.Add(f);
+            //         filteredFriendNames.Add(f.GetName());
+            //     }
+            //
+            // }
     }
 }
