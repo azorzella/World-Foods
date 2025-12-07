@@ -41,6 +41,10 @@ public class DishView : MonoBehaviour {
     }
     
     public void OpenDisplaying(List<Dish> dishes) {
+        if (dishes.Count <= 0) {
+            return;
+        }
+        
         Clear();
 
         GameObject dishEntry = ResourceLoader.LoadObject("DishEntry");
