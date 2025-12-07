@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class WorldMapVisualization : MonoBehaviour {
     UserData currentUser = new("Amy Doherty", "amyd");
-
-    readonly List<Dish> dishLogDeprecated = new();
     
     readonly Dictionary<string, List<VisListener>> listeners = new();
     readonly Dictionary<string, float> values = new();
