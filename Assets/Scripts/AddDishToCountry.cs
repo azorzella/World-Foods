@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -12,10 +13,19 @@ public class AddDishToCountry : MonoBehaviour
     Dish dish;
     
     public TMP_Dropdown dropdown;
+    public TMP_Dropdown countryDropdown;
+
+    private void Start()
+    {
+        countryDropdown.gameObject.SetActive(false);
+    }
+
     public void EntryFilter(string entry)
     {
+        countryDropdown.gameObject.SetActive(false);
+        
         filteredResults.Clear();
-
+        
         if (entry.Length < 3)
         {
             return;
@@ -30,8 +40,13 @@ public class AddDishToCountry : MonoBehaviour
                 filteredResults.Add(d);
                 filteredDishNames.Add(d.GetName());
             }
-        }
 
+        }
+        
+        if (filteredResults.Count == 0)
+        {
+            countryDropdown.gameObject.SetActive(true);
+        }
         dropdown.ClearOptions();
         dropdown.AddOptions(filteredDishNames);
     }
