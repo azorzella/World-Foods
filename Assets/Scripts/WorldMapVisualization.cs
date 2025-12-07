@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class WorldMapVisualization : MonoBehaviour {
     UserData june = new("June December", "june");
