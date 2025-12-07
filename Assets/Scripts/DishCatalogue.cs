@@ -24,6 +24,8 @@ public class DishCatalogue {
 	public static readonly List<Dish> dishes = new();
 	public static readonly Dictionary<string, string> isoCodes = new();
 
+	const string latinPattern = @"^{Script=Latin}*$";
+
 	public void AddDishToCatalogue(Dish dish) {
 		dishes.Add(dish);
 	}
@@ -109,7 +111,15 @@ public class DishCatalogue {
 				}
 
 				isoCode = isoCodes[dishCountry];
-			
+
+				if (!Regex.IsMatch(dishName, latinPattern)) {
+					if (string.IsNullOrWhiteSpace(alternativeName)) {
+						continue;
+					}
+
+					(dishName, alternativeName) = (alternativeName, dishName);
+				}
+				
 				Dish newDish = new Dish(dishName, isoCode, alternativeName);
 				dishes.Add(newDish);
 			}

@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 public class Dish {
     readonly string name;
@@ -6,11 +7,12 @@ public class Dish {
     int rating = 0;
     readonly string countryName;
     readonly string alternativeName;
-
+    
     public Dish(string name, string isoCode, string alternativeName = "") {
         this.name = name;
-        this.isoCode = isoCode;
         this.alternativeName = alternativeName;
+        
+        this.isoCode = isoCode;
         
         foreach (var entry in DishCatalogue.isoCodes) {
             if (entry.Value == isoCode) {
