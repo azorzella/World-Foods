@@ -43,6 +43,9 @@ public class AddDishToCountry : MonoBehaviour
     
     public void LogDish()
     {
-        FindFirstObjectByType<WorldMapVisualization>().LogDish(dish);
+        if (dish != null)
+        {
+            FindFirstObjectByType<WorldMapVisualization>().LogDish(dish);
+        }
     }
 }
