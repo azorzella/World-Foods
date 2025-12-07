@@ -43,6 +43,13 @@ public class WorldMapVisualization : MonoBehaviour {
     }
     
     void Start() {
+        june.AddDishes(DishCatalogue.i.GetXRandomDishes(10));
+        amelia.AddDishes(DishCatalogue.i.GetXRandomDishes(10));
+        mona.AddDishes(DishCatalogue.i.GetXRandomDishes(10));
+        alex.AddDishes(DishCatalogue.i.GetXRandomDishes(10));
+        
+        currentUser.AddDishes(DishCatalogue.i.GetXRandomDishes(15));
+        
         currentUser.AddFriends(june, amelia, mona, alex);
         
         TestDishVisualization();

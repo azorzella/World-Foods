@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using GluonGui.WorkspaceWindow.Views.WorkspaceExplorer.Explorer.Operations;
 
 public class UserData {
     readonly string fullName;
@@ -23,9 +21,6 @@ public class UserData {
         firstName = fullName.Split(' ')[0];
 
         AddFriends(friends);
-        
-
-        AddDishes(DishCatalogue.i.GetXRandomDishes(20));
     }
 
     public Dictionary<Dish, int> GetUniqueDishesEaten() {

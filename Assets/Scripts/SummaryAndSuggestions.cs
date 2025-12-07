@@ -62,8 +62,8 @@ public class SummaryAndSuggestions : MonoBehaviour {
     void PopulateSuggestions(UserData userData) {
         ClearEntries();
         
-        InstantiateFoodSuggestionEntry().PopulatePersonalFavorite(userData);        
-        InstantiateFoodSuggestionEntry().PopulateFamiliarSuggestion(userData);        
+        InstantiateFoodSuggestionEntry().PopulatePersonalFavorite(userData);
+        InstantiateFoodSuggestionEntry().PopulateFamiliarSuggestion(userData);
         InstantiateFoodSuggestionEntry().PopulateUnfamiliarSuggestion(userData);        
         
         foreach (var friend in userData.GetFriends()) {
