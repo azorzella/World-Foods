@@ -4,7 +4,12 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class WorldMapVisualization : MonoBehaviour {
-    UserData currentUser = new("Amy Doherty", "amyd");
+    UserData june = new("June December", "june");
+    UserData amelia = new("Amelia Qux", "ameliia");
+    UserData mona = new("Mona Lisa", "monalisa");
+    UserData alex = new("Alex Zorzella", "azorzella");
+    
+    UserData currentUser = new("Amy", "ratlover");
     
     readonly Dictionary<string, List<VisListener>> listeners = new();
     readonly Dictionary<string, float> values = new();
@@ -38,6 +43,8 @@ public class WorldMapVisualization : MonoBehaviour {
     }
     
     void Start() {
+        currentUser.AddFriends(june, amelia, mona, alex);
+        
         TestDishVisualization();
         FindFirstObjectByType<SummaryAndSuggestions>().Show(currentUser);
     }
