@@ -41,9 +41,9 @@ public class AddDishToCountry : MonoBehaviour {
         }
 
         if (filteredResults.Count == 0) {
-            countryDropdown.ClearOptions();
-            
             countryDropdown.gameObject.SetActive(true);
+            
+            countryDropdown.ClearOptions();
 
             foreach (var pair in DishCatalogue.isoCodes) {
                 countryNames.Add(pair.Key);
