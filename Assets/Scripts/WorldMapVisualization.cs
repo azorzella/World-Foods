@@ -57,7 +57,6 @@ public class WorldMapVisualization : MonoBehaviour {
     }
     
     void TestDishVisualization() {
-        RandomlyPopulateDishLog();
         ForceNotifyListeners();
     }
 
@@ -70,23 +69,6 @@ public class WorldMapVisualization : MonoBehaviour {
         }
 
         NotifyListeners(isoCode);        
-    }
-
-    void RandomlyPopulateDishLog() {
-        for (int i = 0; i < 100; ++i) {
-            bool addMultiple = UnityEngine.Random.Range(0F, 1F) > 0.9F;
-
-            Dish dish = DishCatalogue.i.GetRandomDish();
-
-            if (addMultiple) {
-                for (int c = 0; c < UnityEngine.Random.Range(10, 20); c++) {
-                    currentUser.AddDishes(dish);
-                }
-            }
-            else {
-                currentUser.AddDishes(dish);
-            }
-        }
     }
     
     void ForceNotifyListeners() {
