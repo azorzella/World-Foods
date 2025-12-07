@@ -47,10 +47,6 @@ public class DishCatalogue {
 		return result;
 	}
 
-	public void AddDishToCatalogue(Dish dish) {
-		dishes.Add(dish);
-	}
-
 	public Dish GetRandomDish() {
 		return dishes[UnityEngine.Random.Range(0, dishes.Count)];
 	}
