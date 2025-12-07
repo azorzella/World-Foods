@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SummaryAndSuggestions : MonoBehaviour {
     public TextMeshProUGUI countryCountText;
@@ -12,12 +13,16 @@ public class SummaryAndSuggestions : MonoBehaviour {
 
     readonly List<GameObject> suggestionEntries = new();
     
+    VerticalLayoutGroup verticalLayoutGroup;
+    
     void Start() {
         CacheComponents();
     }
 
     void CacheComponents() {
         canvasGroup = GetComponent<CanvasGroup>();
+        verticalLayoutGroup = parentSuggestionsTo.GetComponent<VerticalLayoutGroup>();
+        
         SetVisible(false);
     }
 
@@ -62,12 +67,25 @@ public class SummaryAndSuggestions : MonoBehaviour {
     void PopulateSuggestions(UserData userData) {
         ClearEntries();
         
-        InstantiateFoodSuggestionEntry().PopulatePersonalFavorite(userData);
-        InstantiateFoodSuggestionEntry().PopulateFamiliarSuggestion(userData);
-        InstantiateFoodSuggestionEntry().PopulateUnfamiliarSuggestion(userData);        
+        FoodSuggestionEntry personalFavorite = InstantiateFoodSuggestionEntry();
+        personalFavorite.PopulatePersonalFavorite(userData);
         
-        foreach (var friend in userData.GetFriends()) {
+        InstantiateFoodSuggestionEntry().PopulateFamiliarSuggestion(userData);
+        InstantiateFoodSuggestionEntry().PopulateUnfamiliarSuggestion(userData);
+
+        List<UserData> friends = userData.GetFriends();
+        
+        foreach (var friend in friends) {
             InstantiateFoodSuggestionEntry().PopulateFriendSuggestion(friend);
         }
+
+        int entryCount = friends.Count + 3;
+        
+        Vector2 newSize = new Vector2(
+            parentSuggestionsTo.sizeDelta.x,
+            personalFavorite.GetComponent<RectTransform>().sizeDelta.y * 
+            entryCount + verticalLayoutGroup.spacing * entryCount);
+            
+        parentSuggestionsTo.sizeDelta = newSize;
     }
 }

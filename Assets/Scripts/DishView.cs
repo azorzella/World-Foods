@@ -61,7 +61,7 @@ public class DishView : MonoBehaviour {
             Vector2 newSize = new Vector2(
                 parentEntriesTo.sizeDelta.x,
                 newEntry.GetComponent<RectTransform>().sizeDelta.y * dishCount + layoutGroup.spacing * dishCount);
-            parentEntriesTo.sizeDelta = newSize;    
+            parentEntriesTo.sizeDelta = newSize;
         }
         
         SetSelfVisible(true);
