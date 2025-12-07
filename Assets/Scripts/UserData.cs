@@ -104,6 +104,10 @@ public class UserData {
     }
 
     public Dish FamiliarSuggestion() {
+        if (uniqueDishes.Count == 0) {
+            return null;
+        }
+        
         Dish result = uniqueDishes.ElementAt(uniqueDishes.Count).Key;
         
         return result;
