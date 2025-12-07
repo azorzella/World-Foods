@@ -18,6 +18,7 @@ public class SummaryAndSuggestions : MonoBehaviour {
 
     void CacheComponents() {
         canvasGroup = GetComponent<CanvasGroup>();
+        SetVisible(false);
     }
 
     public void Show(UserData user) {
@@ -31,18 +32,18 @@ public class SummaryAndSuggestions : MonoBehaviour {
         SetVisible(false);
     }
     
-    public void SetVisible(bool visible) {
+    void SetVisible(bool visible) {
         canvasGroup.alpha = visible ? 1 : 0;
         canvasGroup.interactable = visible;
         canvasGroup.blocksRaycasts = visible;
     }
 
-    public void UpdateSummary(UserData userData) {
+    void UpdateSummary(UserData userData) {
         countryCountText.text = $"{userData.NumUniqueCountriesEatenFrom()} Countries";
         dishCountText.text = $"{userData.NumUniqueDishesEaten()} Dishes";
     }
 
-    public void ClearEntries() {
+    void ClearEntries() {
         while (suggestionEntries.Count > 0) {
             Destroy(suggestionEntries[0]);
             suggestionEntries.RemoveAt(0);
@@ -58,7 +59,7 @@ public class SummaryAndSuggestions : MonoBehaviour {
         return result;
     }
     
-    public void PopulateSuggestions(UserData userData) {
+    void PopulateSuggestions(UserData userData) {
         ClearEntries();
         
         InstantiateFoodSuggestionEntry().PopulatePersonalFavorite(userData);        
