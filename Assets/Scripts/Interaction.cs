@@ -61,6 +61,6 @@ public class Interaction : MonoBehaviour, MenuListener {
     }
 
     public void NotifyMenuStateChanged(int currentIndex) {
-        active = currentIndex > 0;
+        active = currentIndex < 0;
     }
 }
