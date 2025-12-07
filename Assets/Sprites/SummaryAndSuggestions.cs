@@ -26,13 +26,24 @@ public class SummaryAndSuggestions : MonoBehaviour {
     public void UpdateSummary(UserData userData) {
         countryCountText.text = $"{userData.NumUniqueCountriesEatenFrom()} Countries";
         dishCountText.text = $"{userData.NumUniqueDishesEaten()} Dishes";
-    }    
+    }
+
+    FoodSuggestionEntry InstantiateFoodSuggestionEntry() {
+        GameObject newEntry = ResourceLoader.InstantiateObject("FoodSuggestionEntry", Vector2.zero, Quaternion.identity);
+        newEntry.GetComponent<RectTransform>().SetParent(parentSuggestionsTo);
+
+        FoodSuggestionEntry result = newEntry.GetComponent<FoodSuggestionEntry>();
+
+        return result;
+    }
     
     public void PopulateSuggestions(UserData userData) {
+        InstantiateFoodSuggestionEntry().PopulatePersonalFavorite(userData);        
+        InstantiateFoodSuggestionEntry().PopulateFamiliarSuggestion(userData);        
+        InstantiateFoodSuggestionEntry().PopulateUnfamiliarSuggestion(userData);        
+        
         foreach (var friend in userData.GetFriends()) {
-            GameObject newEntry = ResourceLoader.InstantiateObject("FoodSuggestionEntry", Vector2.zero, Quaternion.identity);
-            newEntry.GetComponent<RectTransform>().SetParent(parentSuggestionsTo);
-            newEntry.GetComponent<FoodSuggestionEntry>().Initialize(friend);
+            InstantiateFoodSuggestionEntry().PopulateFriendSuggestion(friend);
         }
     }
 }
