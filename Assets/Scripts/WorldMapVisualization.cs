@@ -72,7 +72,6 @@ public class WorldMapVisualization : MonoBehaviour {
         NotifyListeners(isoCode);        
     }
 
-
     void RandomlyPopulateDishLog() {
         for (int i = 0; i < 100; ++i) {
             bool addMultiple = UnityEngine.Random.Range(0F, 1F) > 0.9F;

@@ -49,7 +49,6 @@ public class UserData {
     
     void UpdateCachedValues() {
         uniqueCountries.Clear();
-        uniqueDishes.Clear();
         
         foreach (var dish in uniqueDishes) {
             string isoCode = dish.Key.GetIsoCode();
@@ -108,7 +107,7 @@ public class UserData {
             return null;
         }
         
-        Dish result = uniqueDishes.ElementAt(uniqueDishes.Count).Key;
+        Dish result = uniqueDishes.ElementAt(UnityEngine.Random.Range(0, uniqueDishes.Count)).Key;
         
         return result;
     }
