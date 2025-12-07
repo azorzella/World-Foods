@@ -19,6 +19,17 @@ public class SummaryAndSuggestions : MonoBehaviour {
     void CacheComponents() {
         canvasGroup = GetComponent<CanvasGroup>();
     }
+
+    public void Show(UserData user) {
+        UpdateSummary(user);
+        PopulateSuggestions(user);
+        
+        SetVisible(true);
+    }
+
+    public void Hide() {
+        SetVisible(false);
+    }
     
     public void SetVisible(bool visible) {
         canvasGroup.alpha = visible ? 1 : 0;
@@ -31,6 +42,13 @@ public class SummaryAndSuggestions : MonoBehaviour {
         dishCountText.text = $"{userData.NumUniqueDishesEaten()} Dishes";
     }
 
+    public void ClearEntries() {
+        while (suggestionEntries.Count > 0) {
+            Destroy(suggestionEntries[0]);
+            suggestionEntries.RemoveAt(0);
+        }
+    }
+    
     FoodSuggestionEntry InstantiateFoodSuggestionEntry() {
         GameObject newEntry = ResourceLoader.InstantiateObject("FoodSuggestionEntry", Vector2.zero, Quaternion.identity);
         newEntry.GetComponent<RectTransform>().SetParent(parentSuggestionsTo);
@@ -38,13 +56,6 @@ public class SummaryAndSuggestions : MonoBehaviour {
         FoodSuggestionEntry result = newEntry.GetComponent<FoodSuggestionEntry>();
 
         return result;
-    }
-
-    public void ClearEntries() {
-        while (suggestionEntries.Count > 0) {
-            Destroy(suggestionEntries[0]);
-            suggestionEntries.RemoveAt(0);
-        }
     }
     
     public void PopulateSuggestions(UserData userData) {
