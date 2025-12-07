@@ -5,10 +5,12 @@ public class Dish {
     readonly string isoCode;
     int rating = 0;
     readonly string countryName;
+    readonly string alternativeName;
 
-    public Dish(string name, string isoCode) {
+    public Dish(string name, string isoCode, string alternativeName = "") {
         this.name = name;
         this.isoCode = isoCode;
+        this.alternativeName = alternativeName;
         
         foreach (var entry in DishCatalogue.isoCodes) {
             if (entry.Value == isoCode) {
@@ -25,6 +27,10 @@ public class Dish {
         return name;
     }
 
+    public string GetAlternativeName() {
+        return alternativeName;
+    }
+    
     public string GetIsoCode() {
         return isoCode;
     }

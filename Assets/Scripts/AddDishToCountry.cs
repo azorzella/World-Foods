@@ -34,7 +34,7 @@ public class AddDishToCountry : MonoBehaviour {
         List<string> filteredDishNames = new();
 
         foreach (var d in DishCatalogue.dishes) {
-            if (d.GetName().ToLower().Contains(entry.ToLower())) {
+            if (d.GetName().ToLower().Contains(entry.ToLower()) || d.GetAlternativeName().ToLower().Contains(entry.ToLower())) {
                 filteredResults.Add(d);
                 filteredDishNames.Add(d.GetName());
             }
@@ -74,10 +74,10 @@ public class AddDishToCountry : MonoBehaviour {
             
         if (country_index < 0) {
             FindFirstObjectByType<WorldMapVisualization>().LogDish(dish);
-        }
-        else {
-            Dish d = new(dishNameInput.text, DishCatalogue.isoCodes.ElementAt(country_index).Value);
-            FindFirstObjectByType<WorldMapVisualization>().LogDish(d);
+        } else {
+            Dish newDish = new(dishNameInput.text, DishCatalogue.isoCodes.ElementAt(country_index).Value);
+            FindFirstObjectByType<WorldMapVisualization>().LogDish(newDish);
+            DishCatalogue.i.AddDishToCatalogue(newDish);
         }
     }
 }
