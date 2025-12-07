@@ -30,7 +30,7 @@ public class Interaction : MonoBehaviour {
 
     void OnRelease(InputAction.CallbackContext context) {
         Vector2 positionLastReleased = Pointer.current.position.ReadValue();
-
+        
         Vector2 difference = positionLastPressed - positionLastReleased;
         float magnitude = difference.magnitude;
         

@@ -727,7 +727,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 9098692910306224947}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.999985
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -861,8 +861,8 @@ CanvasGroup:
   m_GameObject: {fileID: 4831879362560402673}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &4908137945946399559
 GameObject:
@@ -1613,7 +1613,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0005312633}
+  m_AnchoredPosition: {x: 0, y: -0.00006942398}
   m_SizeDelta: {x: 0, y: 2340}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6439786140213077238
