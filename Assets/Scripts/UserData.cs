@@ -103,14 +103,22 @@ public class UserData {
     }
 
     public Dish FamiliarSuggestion() {
-        Dish result = null;
-
+        Dish result = uniqueDishes.ElementAt(uniqueDishes.Count).Key;
+        
         return result;
     }
 
+    const int maxIterations = 1000;
+    
     public Dish UnfamiliarSuggestion() {
         Dish result = null;
 
+        int i = 0;
+        while ((result == null || uniqueDishes.ContainsKey(result)) && i < maxIterations) {
+            result = DishCatalogue.i.GetRandomDish();
+            i++;
+        }
+        
         return result;
     }
 }
