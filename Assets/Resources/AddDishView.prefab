@@ -2463,7 +2463,19 @@ MonoBehaviour:
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5764945826838138459}
+        m_TargetAssemblyTypeName: AddDishToCountry, Scripts
+        m_MethodName: countrySelected
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!1 &5451772327370276501
 GameObject:
@@ -3073,7 +3085,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2346892845616527608}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.8133337
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

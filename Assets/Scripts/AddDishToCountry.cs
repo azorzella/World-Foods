@@ -12,7 +12,7 @@ public class AddDishToCountry : MonoBehaviour {
     readonly List<string> countryNames = new();
 
     Dish dish;
-    int country_index = 0;
+    int country_index = -1;
 
     public TMP_InputField dishNameInput;
     public TMP_Dropdown dropdown;
@@ -41,6 +41,8 @@ public class AddDishToCountry : MonoBehaviour {
         }
 
         if (filteredResults.Count == 0) {
+            countryDropdown.ClearOptions();
+            
             countryDropdown.gameObject.SetActive(true);
 
             foreach (var pair in DishCatalogue.isoCodes) {
@@ -48,7 +50,9 @@ public class AddDishToCountry : MonoBehaviour {
             }
 
             countryDropdown.AddOptions(countryNames);
-            ;
+        }
+        else {
+            dish = filteredResults[0];
         }
 
         dropdown.ClearOptions();
@@ -57,7 +61,6 @@ public class AddDishToCountry : MonoBehaviour {
 
     public void DishSelected(int index) {
         dish = filteredResults[index];
-        Debug.Log($"Selected {dish}");
     }
 
     public void countrySelected(int index) {
@@ -70,15 +73,13 @@ public class AddDishToCountry : MonoBehaviour {
         if (dish == null) {
             return;
         }
-
-        FindFirstObjectByType<WorldMapVisualization>().LogDish(dish);
-        
-        // if (country_index == 0) {
-        //     FindFirstObjectByType<WorldMapVisualization>().LogDish(dish);
-        // }
-        // else {
-        //     Dish d = new(dishNameInput.text, DishCatalogue.isoCodes.ElementAt(country_index).Value);
-        //     FindFirstObjectByType<WorldMapVisualization>().LogDish(d);
-        // }
+            
+        if (country_index < 0) {
+            FindFirstObjectByType<WorldMapVisualization>().LogDish(dish);
+        }
+        else {
+            Dish d = new(dishNameInput.text, DishCatalogue.isoCodes.ElementAt(country_index).Value);
+            FindFirstObjectByType<WorldMapVisualization>().LogDish(d);
+        }
     }
 }
