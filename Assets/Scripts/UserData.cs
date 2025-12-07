@@ -4,7 +4,13 @@ using System.Linq;
 public class UserData {
     readonly string username;
     // readonly string birthday;
+    readonly List<UserData> friends = new();
+    
+    readonly Dictionary<Dish, int> uniqueDishes = new();
+    readonly Dictionary<string, List<Dish>> uniqueCountries = new();
 
+    Dish favoriteDish;
+    
     public UserData(string username) {
         this.username = username;
     }
@@ -16,11 +22,6 @@ public class UserData {
     public Dictionary<string, List<Dish>> GetCountriesEatenFrom() {
         return uniqueCountries;
     }
-    
-    readonly Dictionary<Dish, int> uniqueDishes = new();
-    readonly Dictionary<string, List<Dish>> uniqueCountries = new();
-
-    Dish favoriteDish;
 
     public void AddDishes(params Dish[] dishes) {
         AddDishes(dishes.ToList());
@@ -72,5 +73,13 @@ public class UserData {
 
     public Dish FavoriteDish() {
         return favoriteDish;
+    }
+
+    public void AddFriends(params UserData[] users) {
+        AddFriends(users.ToList());
+    }
+
+    public void AddFriends(List<UserData> users) {
+        friends.AddRange(users);
     }
 }
