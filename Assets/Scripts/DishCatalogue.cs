@@ -23,10 +23,31 @@ public class DishCatalogue {
 	public static readonly List<Dish> dishes = new();
 	public static readonly Dictionary<string, string> isoCodes = new();
 
+	public void AddDishToCatalogue(Dish dish)
+	{
+		dishes.Add(dish);
+	}
+	
 	public Dish GetDishCalled(string dishName) {
 		Dish result = Array.Find(dishes.ToArray(), dish => dish.GetName().ToLower() == dishName.ToLower());
 		
 		return result;
+	}
+
+	public List<Dish> GetDishesWhichContain(string contains) {
+		List<Dish> result = new();
+
+		foreach (Dish dish in dishes) {
+			if (dish.GetName().ToLower() == contains.ToLower()) {
+				result.Add(dish);
+			}
+		}
+
+		return result;
+	}
+
+	public void AddDishToCatalogue(Dish dish) {
+		dishes.Add(dish);
 	}
 
 	public Dish GetRandomDish() {

@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting.TextureAssets;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -41,6 +39,10 @@ public class DishView : MonoBehaviour {
     }
     
     public void OpenDisplaying(List<Dish> dishes) {
+        if (dishes.Count <= 0) {
+            return;
+        }
+        
         Clear();
 
         GameObject dishEntry = ResourceLoader.LoadObject("DishEntry");
@@ -59,7 +61,7 @@ public class DishView : MonoBehaviour {
             Vector2 newSize = new Vector2(
                 parentEntriesTo.sizeDelta.x,
                 newEntry.GetComponent<RectTransform>().sizeDelta.y * dishCount + layoutGroup.spacing * dishCount);
-            parentEntriesTo.sizeDelta = newSize;    
+            parentEntriesTo.sizeDelta = newSize;
         }
         
         SetSelfVisible(true);
