@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting.TextureAssets;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -21,7 +19,7 @@ public class DishView : MonoBehaviour {
     }
     
     public RectTransform parentEntriesTo;
-    public CanvasGroup ratingPanelCanvasGroup;
+    [FormerlySerializedAs("ratingPanelCanvasGroup")] public RatingMenu ratingMenu;
     
     readonly List<GameObject> entries = new();
 
@@ -36,10 +34,15 @@ public class DishView : MonoBehaviour {
         canvasGroup = GetComponent<CanvasGroup>();
         layoutGroup = parentEntriesTo.gameObject.GetComponent<VerticalLayoutGroup>();
         
-        SetVisible(false);
+        SetSelfVisible(false);
+        HideRatingPanel();
     }
     
     public void OpenDisplaying(List<Dish> dishes) {
+        if (dishes.Count <= 0) {
+            return;
+        }
+        
         Clear();
 
         GameObject dishEntry = ResourceLoader.LoadObject("DishEntry");
@@ -61,7 +64,7 @@ public class DishView : MonoBehaviour {
             parentEntriesTo.sizeDelta = newSize;    
         }
         
-        SetVisible(true);
+        SetSelfVisible(true);
     }
     
     void Clear() {
@@ -72,7 +75,7 @@ public class DishView : MonoBehaviour {
     }
 
     public void Close() {
-        SetVisible(false);
+        SetSelfVisible(false);
     }
 
     bool visible;
@@ -87,12 +90,20 @@ public class DishView : MonoBehaviour {
         group.blocksRaycasts = visible;
     }
 
-    void SetVisible(bool visible) {
+    void SetSelfVisible(bool visible) {
         SetCanvasGroupVisible(canvasGroup, visible);
         this.visible = visible;
+
+        if (!visible) {
+            HideRatingPanel();
+        }
     }
 
-    public void SetRatingPanelVisible(bool visible) {
-        SetCanvasGroupVisible(ratingPanelCanvasGroup, visible);        
+    public void ShowRatingPanelFor(Dish dish) {
+        ratingMenu.SetDish(dish);
+    }
+
+    public void HideRatingPanel() {
+        ratingMenu.Hide();
     }
 }
