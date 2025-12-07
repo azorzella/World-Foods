@@ -654,6 +654,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4efbf1fd57a73141985b832882a9351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countryCountText: {fileID: 4218243692116986569}
+  dishCountText: {fileID: 1502439281448624497}
   parentSuggestionsTo: {fileID: 2175598142472364906}
 --- !u!1 &6017868093721424972
 GameObject:
