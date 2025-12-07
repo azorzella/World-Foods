@@ -38,7 +38,7 @@ public class Interaction : MonoBehaviour, MenuListener {
         Vector2 difference = positionLastPressed - positionLastReleased;
         float magnitude = difference.magnitude;
         
-        if (active && DishView.i.IsVisible() && magnitude < 0.02F) {
+        if (active && !DishView.i.IsVisible() && magnitude < 0.02F) {
             Ray ray = camera.ScreenPointToRay(positionLastReleased);
 
             if (Physics.Raycast(ray, out var hit)) {
