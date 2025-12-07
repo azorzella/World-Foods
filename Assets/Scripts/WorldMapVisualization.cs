@@ -46,6 +46,12 @@ public class WorldMapVisualization : MonoBehaviour {
         NotifyListeners(isoCode);        
     }
 
+    public void LogDish(Dish dish)
+    {
+        dishLog.Add(dish);
+        ForceNotifyListeners();
+    }
+    
     int CountDishesFromCountryInLog(string isoCode) {
         int result = 0;
 
