@@ -23,8 +23,7 @@ public class DishCatalogue {
 	public static readonly List<Dish> dishes = new();
 	public static readonly Dictionary<string, string> isoCodes = new();
 
-	public void AddDishToCatalogue(Dish dish)
-	{
+	public void AddDishToCatalogue(Dish dish) {
 		dishes.Add(dish);
 	}
 	
@@ -45,11 +44,7 @@ public class DishCatalogue {
 
 		return result;
 	}
-
-	public void AddDishToCatalogue(Dish dish) {
-		dishes.Add(dish);
-	}
-
+	
 	public Dish GetRandomDish() {
 		return dishes[UnityEngine.Random.Range(0, dishes.Count)];
 	}

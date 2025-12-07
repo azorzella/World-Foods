@@ -58,7 +58,7 @@ public class WorldMapVisualization : MonoBehaviour {
         currentUser.AddFriends(june, amelia, mona, alex);
         
         ForceNotifyListeners();
-        // FindFirstObjectByType<SummaryAndSuggestions>().Show(currentUser);
+        FindFirstObjectByType<SummaryAndSuggestions>().Show(currentUser);
     }
     
     void SetValueForCountryVisualization(string isoCode, float value) {
