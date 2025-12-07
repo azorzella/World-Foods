@@ -9392,7 +9392,6 @@ GameObject:
   m_Component:
   - component: {fileID: 541459076}
   - component: {fileID: 541459075}
-  - component: {fileID: 541459074}
   m_Layer: 0
   m_Name: worldmap
   m_TagString: Untagged
@@ -9400,18 +9399,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &541459074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541459073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 427c6159b12b46f4db2af692e253eede, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &541459075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43739,29 +43726,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1186343459425661080, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.00011444092
-      objectReference: {fileID: 0}
-    - target: {fileID: 2346892845616527608, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2346892845616527608, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2346892845616527608, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3163817501551836455, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
       propertyPath: m_Name
       value: Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 3259551094005269384, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5193370462132127546, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00044489623
+      value: -0.0027969405
       objectReference: {fileID: 0}
     - target: {fileID: 5281770472514708024, guid: 6d89107e3de514b709ab7b96c3f1880a, type: 3}
       propertyPath: m_AnchorMax.x

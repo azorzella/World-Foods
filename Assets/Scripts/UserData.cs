@@ -43,8 +43,6 @@ public class UserData {
             }
 
             uniqueDishes[dish]++;
-            
-            Debug.Log(uniqueDishes[dish]);
         }
         
         UpdateCachedValues();
@@ -61,8 +59,6 @@ public class UserData {
             }
 
             uniqueCountries[isoCode].Add(dish.Key);
-            
-            Debug.Log(uniqueCountries[isoCode].Count);
         }
 
         int mostTimesEatenOneDish = 0;

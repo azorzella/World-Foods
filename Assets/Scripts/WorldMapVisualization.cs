@@ -110,4 +110,8 @@ public class WorldMapVisualization : MonoBehaviour {
 
         return result;
     }
+
+    public UserData GetCurrentUser() {
+        return currentUser;
+    }
 }

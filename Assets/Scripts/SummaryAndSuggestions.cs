@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SummaryAndSuggestions : MonoBehaviour {
+public class SummaryAndSuggestions : MonoBehaviour, MenuListener {
     public TextMeshProUGUI countryCountText;
     public TextMeshProUGUI dishCountText;
     public RectTransform parentSuggestionsTo;
@@ -14,6 +13,8 @@ public class SummaryAndSuggestions : MonoBehaviour {
     readonly List<GameObject> suggestionEntries = new();
     
     VerticalLayoutGroup verticalLayoutGroup;
+
+    UserData currentUser;
     
     void Start() {
         CacheComponents();
@@ -22,8 +23,8 @@ public class SummaryAndSuggestions : MonoBehaviour {
     void CacheComponents() {
         canvasGroup = GetComponent<CanvasGroup>();
         verticalLayoutGroup = parentSuggestionsTo.GetComponent<VerticalLayoutGroup>();
-        
-        SetVisible(false);
+        currentUser = FindFirstObjectByType<WorldMapVisualization>().GetCurrentUser();
+        FindFirstObjectByType<Menu>().RegisterListener(this);
     }
 
     public void Show(UserData user) {
@@ -87,5 +88,13 @@ public class SummaryAndSuggestions : MonoBehaviour {
             entryCount + verticalLayoutGroup.spacing * entryCount);
             
         parentSuggestionsTo.sizeDelta = newSize;
+    }
+
+    public void NotifyMenuStateChanged(int currentIndex) {
+        if (currentIndex == 1) {
+            Show(currentUser);
+        } else {
+            Hide();
+        }
     }
 }

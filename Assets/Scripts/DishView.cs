@@ -109,8 +109,8 @@ public class DishView : MonoBehaviour, MenuListener {
         ratingMenu.Hide();
     }
 
-    public void NotifyMenuStateChanged(bool nowActive) {
-        if (nowActive) {
+    public void NotifyMenuStateChanged(int currentIndex) {
+        if (currentIndex > 0) {
             SetSelfVisible(false);
         }
     }

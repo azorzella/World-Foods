@@ -68,8 +68,6 @@ public class AddDishToCountry : MonoBehaviour {
     }
 
     public void LogDish() {
-        Debug.Log(dish);
-        
         if (dish == null) {
             return;
         }

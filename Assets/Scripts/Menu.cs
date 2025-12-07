@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public interface MenuListener {
-    void NotifyMenuStateChanged(bool nowActive);
+    void NotifyMenuStateChanged(int currentIndex);
 }
 
 public class Menu : MonoBehaviour {
@@ -14,16 +13,16 @@ public class Menu : MonoBehaviour {
 
     public void RegisterListener(MenuListener listener) {
         listeners.Add(listener);
-        listener.NotifyMenuStateChanged(selectedIndex > 0);
+        listener.NotifyMenuStateChanged(selectedIndex);
     }
 
     void NotifyListeners() {
         foreach (var listener in listeners) {
-            listener.NotifyMenuStateChanged(selectedIndex > 0);
+            listener.NotifyMenuStateChanged(selectedIndex);
         }
     }
     
-    public void showUI(int newIndex) {
+    public void ShowUi(int newIndex) {
         selectedIndex = newIndex;
         
         for (int i = 0; i < menus.Count; i++) {
