@@ -26,7 +26,12 @@ public class FoodSuggestionEntry : MonoBehaviour {
         noteText.text = "Something new";
     }
     
-    public void PopulateGeneralInfo(Dish dish) {
+    void PopulateGeneralInfo(Dish dish) {
+        if (dish == null) {
+            Debug.Log($"Dish was null.");
+            return;
+        }
+        
         dishNameText.text = dish.GetName();
         countryText.text = dish.GetCountryNameFormatted();
     }
