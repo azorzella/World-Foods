@@ -1,22 +1,31 @@
 using System.Collections.Generic;
+using System.Linq;
 
 public class UserData {
     readonly string username;
     // readonly string birthday;
 
-    public UserData(string username, List<Dish> dishes) {
+    public UserData(string username) {
         this.username = username;
     }
 
-    public Dictionary<Dish, int> GetDishes() {
+    public Dictionary<Dish, int> GetUniqueDishesEaten() {
         return uniqueDishes;
     }
 
-    readonly Dictionary<string, int> uniqueCountries = new();
+    public Dictionary<string, List<Dish>> GetCountriesEatenFrom() {
+        return uniqueCountries;
+    }
+    
     readonly Dictionary<Dish, int> uniqueDishes = new();
+    readonly Dictionary<string, List<Dish>> uniqueCountries = new();
 
     Dish favoriteDish;
 
+    public void AddDishes(params Dish[] dishes) {
+        AddDishes(dishes.ToList());
+    }
+    
     public void AddDishes(List<Dish> dishes) {
         foreach (var dish in dishes) {
             if (!uniqueDishes.ContainsKey(dish)) {
@@ -37,10 +46,10 @@ public class UserData {
             string isoCode = dish.Key.GetIsoCode();
                 
             if (!uniqueCountries.ContainsKey(isoCode)) {
-                uniqueCountries.Add(isoCode, 1);
+                uniqueCountries.Add(isoCode, new List<Dish>());
             }
 
-            uniqueCountries[isoCode]++;
+            uniqueCountries[isoCode].Add(dish.Key);
         }
 
         int mostTimesEatenOneDish = 0;
