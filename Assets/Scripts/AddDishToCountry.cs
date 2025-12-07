@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class AddDishToCountry : MonoBehaviour {
     TextMeshProUGUI Button;
@@ -34,22 +33,16 @@ public class AddDishToCountry : MonoBehaviour {
         List<string> filteredDishNames = new();
 
         foreach (var d in DishCatalogue.dishes) {
-            if (d.GetName().ToLower().Contains(entry.ToLower())) {
+            if (d.GetName().ToLower().Contains(entry.ToLower()) || d.GetAlternativeName().ToLower().Contains(entry.ToLower())) {
                 filteredResults.Add(d);
                 filteredDishNames.Add(d.GetName());
             }
         }
 
         if (filteredResults.Count == 0) {
-            countryDropdown.ClearOptions();
-            
             countryDropdown.gameObject.SetActive(true);
 
-            foreach (var pair in DishCatalogue.isoCodes) {
-                countryNames.Add(pair.Key);
-            }
-
-            countryDropdown.AddOptions(countryNames);
+            PopulateCountryDropdown();
         }
         else {
             dish = filteredResults[0];
@@ -57,6 +50,19 @@ public class AddDishToCountry : MonoBehaviour {
 
         dropdown.ClearOptions();
         dropdown.AddOptions(filteredDishNames);
+    }
+
+    void PopulateCountryDropdown() {
+        countryDropdown.ClearOptions();
+
+        foreach (var pair in DishCatalogue.isoCodes) {
+            TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+            string countryName = textInfo.ToTitleCase(pair.Key);
+                
+            countryNames.Add(countryName);
+        }
+
+        countryDropdown.AddOptions(countryNames);
     }
 
     public void DishSelected(int index) {
@@ -68,18 +74,16 @@ public class AddDishToCountry : MonoBehaviour {
     }
 
     public void LogDish() {
-        Debug.Log(dish);
-        
         if (dish == null) {
             return;
         }
             
         if (country_index < 0) {
             FindFirstObjectByType<WorldMapVisualization>().LogDish(dish);
-        }
-        else {
-            Dish d = new(dishNameInput.text, DishCatalogue.isoCodes.ElementAt(country_index).Value);
-            FindFirstObjectByType<WorldMapVisualization>().LogDish(d);
+        } else {
+            Dish newDish = new(dishNameInput.text, DishCatalogue.isoCodes.ElementAt(country_index).Value);
+            FindFirstObjectByType<WorldMapVisualization>().LogDish(newDish);
+            DishCatalogue.i.AddDishToCatalogue(newDish);
         }
     }
 }

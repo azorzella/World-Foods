@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using System.Globalization;
 using System.IO;
 using UnityEngine;
 using System.Text.RegularExpressions;
@@ -23,26 +24,10 @@ public class DishCatalogue {
 	public static readonly List<Dish> dishes = new();
 	public static readonly Dictionary<string, string> isoCodes = new();
 
+	const string latinPattern = @"^{Script=Latin}*$";
+
 	public void AddDishToCatalogue(Dish dish) {
 		dishes.Add(dish);
-	}
-	
-	public Dish GetDishCalled(string dishName) {
-		Dish result = Array.Find(dishes.ToArray(), dish => dish.GetName().ToLower() == dishName.ToLower());
-		
-		return result;
-	}
-
-	public List<Dish> GetDishesWhichContain(string contains) {
-		List<Dish> result = new();
-
-		foreach (Dish dish in dishes) {
-			if (dish.GetName().ToLower() == contains.ToLower()) {
-				result.Add(dish);
-			}
-		}
-
-		return result;
 	}
 	
 	public Dish GetRandomDish() {
@@ -52,7 +37,7 @@ public class DishCatalogue {
 	static void ParseData() {
 		ParseIsoCodes();
 
-		ParseDishesFromFile("dishes.tsv", 2, 5);
+		ParseDishesFromFile("dishes.tsv", 1, 5, 2);
 		ParseDishesFromFile("wikipedia_dishes.tsv", 0, 1);
 	}
 	
@@ -80,7 +65,7 @@ public class DishCatalogue {
 		}
 	}
 	
-	static void ParseDishesFromFile(string filename, int dishNameIndex, int countryNameIndex) {
+	static void ParseDishesFromFile(string filename, int dishNameIndex, int countryNameIndex, int alternativeNameIndex = -1) {
 		string contents = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "", filename));
 
 		string[] lines = contents.Split('\n');
@@ -99,7 +84,17 @@ public class DishCatalogue {
 				continue;
 			}
 			
+			TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+
 			string dishName = split[dishNameIndex];
+			textInfo.ToTitleCase(dishName);
+
+			string alternativeName = "";
+			
+			if (alternativeNameIndex >= 0) {
+				alternativeName = split[alternativeNameIndex];
+				alternativeName = textInfo.ToTitleCase(alternativeName);
+			}
 			
 			string dishCountries = split[countryNameIndex];
 
@@ -116,8 +111,16 @@ public class DishCatalogue {
 				}
 
 				isoCode = isoCodes[dishCountry];
-			
-				Dish newDish = new Dish(dishName, isoCode);
+
+				if (!Regex.IsMatch(dishName, latinPattern)) {
+					if (string.IsNullOrWhiteSpace(alternativeName)) {
+						continue;
+					}
+
+					(dishName, alternativeName) = (alternativeName, dishName);
+				}
+				
+				Dish newDish = new Dish(dishName, isoCode, alternativeName);
 				dishes.Add(newDish);
 			}
 		}

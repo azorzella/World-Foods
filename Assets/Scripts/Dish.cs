@@ -1,13 +1,17 @@
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 public class Dish {
     readonly string name;
     readonly string isoCode;
     int rating = 0;
     readonly string countryName;
-
-    public Dish(string name, string isoCode) {
+    readonly string alternativeName;
+    
+    public Dish(string name, string isoCode, string alternativeName = "") {
         this.name = name;
+        this.alternativeName = alternativeName;
+        
         this.isoCode = isoCode;
         
         foreach (var entry in DishCatalogue.isoCodes) {
@@ -25,6 +29,10 @@ public class Dish {
         return name;
     }
 
+    public string GetAlternativeName() {
+        return alternativeName;
+    }
+    
     public string GetIsoCode() {
         return isoCode;
     }
