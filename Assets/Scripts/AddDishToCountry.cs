@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using UnityEngine;
 using TMPro;
@@ -46,7 +47,10 @@ public class AddDishToCountry : MonoBehaviour {
             countryDropdown.ClearOptions();
 
             foreach (var pair in DishCatalogue.isoCodes) {
-                countryNames.Add(pair.Key);
+                TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+                string countryName = textInfo.ToTitleCase(pair.Key);
+                
+                countryNames.Add(countryName);
             }
 
             countryDropdown.AddOptions(countryNames);
