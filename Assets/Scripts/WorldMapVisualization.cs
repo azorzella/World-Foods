@@ -58,7 +58,7 @@ public class WorldMapVisualization : MonoBehaviour {
         currentUser.AddFriends(june, amelia, mona, alex);
         
         ForceNotifyListeners();
-        FindFirstObjectByType<SummaryAndSuggestions>().Show(currentUser);
+        // FindFirstObjectByType<SummaryAndSuggestions>().Show(currentUser);
     }
     
     void SetValueForCountryVisualization(string isoCode, float value) {
@@ -76,6 +76,12 @@ public class WorldMapVisualization : MonoBehaviour {
         int dishesFromCountryWithMostDishesInLog = 0;
 
         Dictionary<string, List<Dish>> numDishesFromCountries = currentUser.GetCountriesEatenFrom();
+
+        foreach (var pair in numDishesFromCountries) {
+            if (pair.Value.Count > dishesFromCountryWithMostDishesInLog) {
+                dishesFromCountryWithMostDishesInLog = pair.Value.Count;
+            }
+        }
         
         foreach (var pair in DishCatalogue.isoCodes) {
             string isoCode = pair.Value;
