@@ -1,9 +1,16 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class WorldMapVisualization : MonoBehaviour {
+    UserData june = new("June December", "june");
+    UserData amelia = new("Amelia Qux", "ameliia");
+    UserData mona = new("Mona Lisa", "monalisa");
+    UserData alex = new("Alex Zorzella", "azorzella");
+    
+    UserData currentUser = new("Amy", "ratlover");
+    
     readonly Dictionary<string, List<VisListener>> listeners = new();
     readonly Dictionary<string, float> values = new();
     
@@ -21,7 +28,7 @@ public class WorldMapVisualization : MonoBehaviour {
         }
     }
 
-    public void NotifyListeners(string isoCode) {
+    void NotifyListeners(string isoCode) {
         if (!listeners.ContainsKey(isoCode)) {
             return;
         }
@@ -34,8 +41,26 @@ public class WorldMapVisualization : MonoBehaviour {
             }
         }
     }
+    
+    void Start() {
+        june.AddDishes(DishCatalogue.i.GetXRandomDishes(10));
+        amelia.AddDishes(DishCatalogue.i.GetXRandomDishes(10));
+        mona.AddDishes(DishCatalogue.i.GetXRandomDishes(10));
+        alex.AddDishes(DishCatalogue.i.GetXRandomDishes(10));
+        
+        currentUser.AddDishes(DishCatalogue.i.GetXRandomDishes(15));
+        
+        currentUser.AddFriends(june, amelia, mona, alex);
+        
+        TestDishVisualization();
+        FindFirstObjectByType<SummaryAndSuggestions>().Show(currentUser);
+    }
+    
+    void TestDishVisualization() {
+        ForceNotifyListeners();
+    }
 
-    public void SetValue(string isoCode, float value) {
+    void SetValueForCountryVisualization(string isoCode, float value) {
         if (!values.ContainsKey(isoCode)) {
             values.Add(isoCode, value);
         }
@@ -45,95 +70,37 @@ public class WorldMapVisualization : MonoBehaviour {
 
         NotifyListeners(isoCode);        
     }
-
-    int CountDishesFromCountryInLog(string isoCode) {
-        int result = 0;
-
-        foreach (var dish in dishLog) {
-            if (dish.GetIsoCode().ToLower() == isoCode.ToLower()) {
-                result++;
-            }
-        }
-        
-        return result;
-    }
-    
-    readonly List<Dish> dishLog = new();
-
-    void RandomlyPopulateDishLog() {
-        for (int i = 0; i < 100; ++i) {
-            bool addMultiple = UnityEngine.Random.Range(0F, 1F) > 0.9F;
-
-            Dish dish = DishCatalogue.i.GetRandomDish();
-
-            if (addMultiple) {
-                for (int c = 0; c < UnityEngine.Random.Range(10, 20); c++) {
-                    dishLog.Add(dish);
-                }
-            }
-            else {
-                dishLog.Add(dish);
-            }
-        }
-    }
     
     void ForceNotifyListeners() {
         int dishesFromCountryWithMostDishesInLog = 0;
 
-        Dictionary<string, int> numDishesFromCountries = new();
-        
-        foreach (var pair in DishCatalogue.isoCodes) {
-            string isoCode = pair.Value;
-            int numDishesFromCountry = CountDishesFromCountryInLog(isoCode);
-
-            if (numDishesFromCountry > dishesFromCountryWithMostDishesInLog) {
-                dishesFromCountryWithMostDishesInLog = numDishesFromCountry;
-            }
-
-            numDishesFromCountries.Add(isoCode, numDishesFromCountry);
-        }
+        Dictionary<string, List<Dish>> numDishesFromCountries = currentUser.GetCountriesEatenFrom();
         
         foreach (var pair in DishCatalogue.isoCodes) {
             string isoCode = pair.Value;
             float percentage = 0;
 
-            int numDishes = numDishesFromCountries[isoCode];
+            int numDishes = 0;
+            
+            if(numDishesFromCountries.ContainsKey(isoCode)) {
+                numDishes = numDishesFromCountries[isoCode].Count;
+            }
 
             if (numDishes > 0) {
                 percentage = (float)numDishes / dishesFromCountryWithMostDishesInLog;
             }
             
-            SetValue(isoCode, percentage);
-        }
-    }
-
-    void TestDishVisualization() {
-        RandomlyPopulateDishLog();
-        ForceNotifyListeners();
-    }
-
-    void Start() {
-        TestDishVisualization();
-    }
-
-    void Update() {
-        if (Keyboard.current.cKey.wasPressedThisFrame) {
-            dishLog.Clear();
-            TestDishVisualization();
-        } else if (Keyboard.current.aKey.wasPressedThisFrame) {
-            TestDishVisualization();
+            SetValueForCountryVisualization(isoCode, percentage);
         }
     }
 
     public List<Dish> GetLoggedDishesFromCountry(string isoCode) {
         List<Dish> result = new();
 
-        foreach (var dish in dishLog) {
-            if (dish.GetIsoCode() == isoCode) {
-                result.Add(dish);
-            }
+        if (currentUser.GetCountriesEatenFrom().ContainsKey(isoCode)) {
+            result = currentUser.GetCountriesEatenFrom()[isoCode];
         }
-        
+
         return result;
     }
 }
