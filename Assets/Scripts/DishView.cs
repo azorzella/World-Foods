@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class DishView : MonoBehaviour {
+public class DishView : MonoBehaviour, MenuListener {
     static DishView _i;
 	
     public static DishView i {
@@ -28,6 +28,8 @@ public class DishView : MonoBehaviour {
 
     void Start() {
         DontDestroyOnLoad(gameObject);
+        
+        FindFirstObjectByType<Menu>().RegisterListener(this);
     }
 
     void CacheComponents() {
@@ -105,5 +107,11 @@ public class DishView : MonoBehaviour {
 
     public void HideRatingPanel() {
         ratingMenu.Hide();
+    }
+
+    public void NotifyMenuStateChanged(bool nowActive) {
+        if (nowActive) {
+            SetSelfVisible(false);
+        }
     }
 }

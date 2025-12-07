@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class UserData {
     readonly string fullName;
@@ -42,6 +43,8 @@ public class UserData {
             }
 
             uniqueDishes[dish]++;
+            
+            Debug.Log(uniqueDishes[dish]);
         }
         
         UpdateCachedValues();
@@ -58,6 +61,8 @@ public class UserData {
             }
 
             uniqueCountries[isoCode].Add(dish.Key);
+            
+            Debug.Log(uniqueCountries[isoCode].Count);
         }
 
         int mostTimesEatenOneDish = 0;
