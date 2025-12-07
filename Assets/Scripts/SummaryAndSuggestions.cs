@@ -55,7 +55,7 @@ public class SummaryAndSuggestions : MonoBehaviour {
         newEntry.GetComponent<RectTransform>().SetParent(parentSuggestionsTo);
 
         FoodSuggestionEntry result = newEntry.GetComponent<FoodSuggestionEntry>();
-
+        
         return result;
     }
     
