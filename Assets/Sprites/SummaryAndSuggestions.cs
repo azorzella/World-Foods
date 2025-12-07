@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class SummaryAndSuggestions : MonoBehaviour {
     
     CanvasGroup canvasGroup;
 
+    readonly List<GameObject> suggestionEntries = new();
+    
     void Start() {
         CacheComponents();
     }
@@ -36,8 +39,17 @@ public class SummaryAndSuggestions : MonoBehaviour {
 
         return result;
     }
+
+    public void ClearEntries() {
+        while (suggestionEntries.Count > 0) {
+            Destroy(suggestionEntries[0]);
+            suggestionEntries.RemoveAt(0);
+        }
+    }
     
     public void PopulateSuggestions(UserData userData) {
+        ClearEntries();
+        
         InstantiateFoodSuggestionEntry().PopulatePersonalFavorite(userData);        
         InstantiateFoodSuggestionEntry().PopulateFamiliarSuggestion(userData);        
         InstantiateFoodSuggestionEntry().PopulateUnfamiliarSuggestion(userData);        
