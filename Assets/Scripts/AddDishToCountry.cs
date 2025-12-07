@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class AddDishToCountry : MonoBehaviour {
     TextMeshProUGUI Button;
@@ -43,17 +41,8 @@ public class AddDishToCountry : MonoBehaviour {
 
         if (filteredResults.Count == 0) {
             countryDropdown.gameObject.SetActive(true);
-            
-            countryDropdown.ClearOptions();
 
-            foreach (var pair in DishCatalogue.isoCodes) {
-                TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
-                string countryName = textInfo.ToTitleCase(pair.Key);
-                
-                countryNames.Add(countryName);
-            }
-
-            countryDropdown.AddOptions(countryNames);
+            PopulateCountryDropdown();
         }
         else {
             dish = filteredResults[0];
@@ -61,6 +50,19 @@ public class AddDishToCountry : MonoBehaviour {
 
         dropdown.ClearOptions();
         dropdown.AddOptions(filteredDishNames);
+    }
+
+    void PopulateCountryDropdown() {
+        countryDropdown.ClearOptions();
+
+        foreach (var pair in DishCatalogue.isoCodes) {
+            TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+            string countryName = textInfo.ToTitleCase(pair.Key);
+                
+            countryNames.Add(countryName);
+        }
+
+        countryDropdown.AddOptions(countryNames);
     }
 
     public void DishSelected(int index) {
