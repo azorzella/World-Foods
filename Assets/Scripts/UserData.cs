@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -81,5 +82,9 @@ public class UserData {
 
     public void AddFriends(List<UserData> users) {
         friends.AddRange(users);
+    }
+
+    public List<UserData> GetFriends() {
+        return friends;
     }
 }
