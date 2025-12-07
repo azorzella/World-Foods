@@ -19,8 +19,8 @@ public class DishCatalogue {
 	DishCatalogue() {
 		ParseData();
 	}
-	
-	static readonly List<Dish> dishes = new();
+
+	public static readonly List<Dish> dishes = new();
 	public static readonly Dictionary<string, string> isoCodes = new();
 
 	public void AddDishToCatalogue(Dish dish)
