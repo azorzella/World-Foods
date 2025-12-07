@@ -52,14 +52,9 @@ public class WorldMapVisualization : MonoBehaviour {
         
         currentUser.AddFriends(june, amelia, mona, alex);
         
-        TestDishVisualization();
-        FindFirstObjectByType<SummaryAndSuggestions>().Show(currentUser);
-    }
-    
-    void TestDishVisualization() {
         ForceNotifyListeners();
     }
-
+    
     void SetValueForCountryVisualization(string isoCode, float value) {
         if (!values.ContainsKey(isoCode)) {
             values.Add(isoCode, value);
