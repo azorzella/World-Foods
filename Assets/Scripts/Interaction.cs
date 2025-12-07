@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Interaction : MonoBehaviour {
+public class Interaction : MonoBehaviour, MenuListener {
     Camera camera;
     Transform cameraTransform;
     
@@ -10,6 +10,8 @@ public class Interaction : MonoBehaviour {
     Vector2 positionLastPressed;
 
     UserInput userInput;
+
+    bool active = false;
     
     void Start() {
         userInput = new();
@@ -22,6 +24,8 @@ public class Interaction : MonoBehaviour {
         camera = Camera.main;
         cameraTransform = camera.gameObject.transform;
         vis = FindFirstObjectByType<WorldMapVisualization>();
+        
+        FindFirstObjectByType<Menu>().RegisterListener(this);
     }
     
     void OnPress(InputAction.CallbackContext context) {
@@ -34,7 +38,7 @@ public class Interaction : MonoBehaviour {
         Vector2 difference = positionLastPressed - positionLastReleased;
         float magnitude = difference.magnitude;
         
-        if (!DishView.i.IsVisible() && magnitude < 0.02F) {
+        if (active && DishView.i.IsVisible() && magnitude < 0.02F) {
             Ray ray = camera.ScreenPointToRay(positionLastReleased);
 
             if (Physics.Raycast(ray, out var hit)) {
@@ -48,11 +52,15 @@ public class Interaction : MonoBehaviour {
     const float sensitivity = 0.0045F;
     
     void OnDrag(InputAction.CallbackContext context) {
-        if (!DishView.i.IsVisible()) {
+        if (active && !DishView.i.IsVisible()) {
             Vector2 currentPosition = cameraTransform.position;
 
             currentPosition -= context.ReadValue<Vector2>() * sensitivity;
             cameraTransform.position = new Vector3(Mathf.Clamp(currentPosition.x, -clampX, clampX), 0, -10);
         }        
+    }
+
+    public void NotifyMenuStateChanged(bool nowActive) {
+        active = !nowActive;
     }
 }
