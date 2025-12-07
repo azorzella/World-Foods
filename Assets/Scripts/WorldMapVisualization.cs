@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WorldMapVisualization : MonoBehaviour {
-    UserData currentUser = new("amyd");
+    UserData currentUser = new("Amy Doherty", "amyd");
 
     readonly List<Dish> dishLogDeprecated = new();
     

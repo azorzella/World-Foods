@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 
 public class UserData {
+    readonly string fullName;
+    readonly string firstName;
+    
     readonly string username;
     // readonly string birthday;
     readonly List<UserData> friends = new();
@@ -12,8 +15,11 @@ public class UserData {
 
     Dish favoriteDish;
     
-    public UserData(string username) {
+    public UserData(string fullName, string username) {
+        this.fullName = fullName;
         this.username = username;
+        
+        firstName = fullName.Split(' ')[0];
     }
 
     public Dictionary<Dish, int> GetUniqueDishesEaten() {
@@ -63,6 +69,14 @@ public class UserData {
             }
         }
     }
+
+    public string GetUsername() {
+        return username;
+    }
+
+    public string GetFirstName() {
+        return firstName;
+    }
     
     public int NumUniqueCountriesEatenFrom() {
         return uniqueCountries.Count;
@@ -86,5 +100,17 @@ public class UserData {
 
     public List<UserData> GetFriends() {
         return friends;
+    }
+
+    public Dish FamiliarSuggestion() {
+        Dish result = null;
+
+        return result;
+    }
+
+    public Dish UnfamiliarSuggestion() {
+        Dish result = null;
+
+        return result;
     }
 }
