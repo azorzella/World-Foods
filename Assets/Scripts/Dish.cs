@@ -9,7 +9,12 @@ public class Dish {
     
     int rating = 0;
     
-    // Sets the passed values and caches the country's formatted name
+    /// <summary>
+    /// Sets the passed values and caches the country's formatted name
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="isoCode"></param>
+    /// <param name="alternativeName"></param>
     public Dish(string name, string isoCode, string alternativeName = "") {
         this.name = name;
         this.alternativeName = alternativeName;
@@ -55,7 +60,10 @@ public class Dish {
         rating = newRating;
     }
     
-    // Returns the country's name and ISO code formatted as a string
+    /// <summary>
+    /// Returns the country's name and ISO code formatted as a string
+    /// </summary>
+    /// <returns></returns>
     public override string ToString() {
         return $"{name} ({isoCode})";
     }
