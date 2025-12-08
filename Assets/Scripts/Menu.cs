@@ -1,10 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface MenuListener {
-    void NotifyMenuStateChanged(int currentIndex);
-}
-
 public class Menu : MonoBehaviour {
     public List<GameObject> menus;
     int selectedIndex = 0;
