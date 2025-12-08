@@ -10,13 +10,18 @@ public class CountryObject : MonoBehaviour, VisListener {
         Initialize();
     }
 
-    // Caches the country object's ISO code and registers it to the WorldMapVisualization
+    /// <summary>
+    /// Caches the country object's ISO code and registers it to the WorldMapVisualization
+    /// </summary>
     void Initialize() {
         isoCode = gameObject.name.ToUpper();
         transform.root.GetComponent<WorldMapVisualization>().RegisterListener(this, isoCode);
     }
 
-    // Updates the object's color whenever the WorldMapVisualization notifies it of its new gradient value
+    /// <summary>
+    /// Updates the object's color whenever the WorldMapVisualization notifies it of its new gradient value
+    /// </summary>
+    /// <param name="newValue"></param>
     public void OnValueChanged(float newValue) {
         LeanTween.cancel(gameObject);
 
