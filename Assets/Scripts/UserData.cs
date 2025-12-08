@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 public class UserData {
     readonly string fullName;
@@ -15,6 +14,14 @@ public class UserData {
 
     Dish favoriteDish;
     
+    /// <summary>
+    /// Caches the user's full name and username, determines their
+    /// first name based on their full name, and then adds the passed friends
+    /// to their friends list
+    /// </summary>
+    /// <param name="fullName"></param>
+    /// <param name="username"></param>
+    /// <param name="friends"></param>
     public UserData(string fullName, string username, params UserData[] friends) {
         this.fullName = fullName;
         this.username = username;
@@ -24,22 +31,39 @@ public class UserData {
         AddFriends(friends);
     }
 
+    /// <summary>
+    /// Returns the dictionary of unique dishes to times eaten
+    /// </summary>
+    /// <returns></returns>
     public Dictionary<Dish, int> GetUniqueDishesEaten() {
         return uniqueDishes;
     }
 
+    /// <summary>
+    /// Returns the dictionary of countries to list of dishes eaten from that country
+    /// </summary>
+    /// <returns></returns>
     public Dictionary<string, List<Dish>> GetCountriesEatenFrom() {
         return uniqueCountries;
     }
 
+    /// <summary>
+    /// Adds the passed dishes to the user's dictionary of dishes
+    /// </summary>
+    /// <param name="dishes"></param>
     public void AddDishes(params Dish[] dishes) {
         AddDishes(dishes.ToList());
     }
     
+    /// <summary>
+    /// Checks if the passed dish is present in the dictionary of dishes the user has eaten and adds an entry if
+    /// it isn't. It then increases the number of times that user has eaten that dish by one
+    /// </summary>
+    /// <param name="dishes"></param>
     public void AddDishes(List<Dish> dishes) {
         foreach (var dish in dishes) {
             if (!uniqueDishes.ContainsKey(dish)) {
-                uniqueDishes.Add(dish, 1);
+                uniqueDishes.Add(dish, 0);
             }
 
             uniqueDishes[dish]++;
@@ -48,9 +72,10 @@ public class UserData {
         UpdateCachedValues();
     }
     
+    /// <summary>
+    /// Updates the list of dishes eaten from each country using the dishes from the unique dishes
+    /// </summary>
     void UpdateCachedValues() {
-        uniqueCountries.Clear();
-        
         foreach (var dish in uniqueDishes) {
             string isoCode = dish.Key.GetIsoCode();
                 
@@ -58,7 +83,9 @@ public class UserData {
                 uniqueCountries.Add(isoCode, new List<Dish>());
             }
 
-            uniqueCountries[isoCode].Add(dish.Key);
+            if (!uniqueCountries[isoCode].Contains(dish.Key)) {
+                uniqueCountries[isoCode].Add(dish.Key);
+            }
         }
 
         int mostTimesEatenOneDish = 0;
@@ -70,6 +97,8 @@ public class UserData {
             }
         }
     }
+    
+    // Getters
 
     public string GetUsername() {
         return username;
@@ -79,30 +108,50 @@ public class UserData {
         return firstName;
     }
     
+    public Dish GetFavoriteDish() {
+        return favoriteDish;
+    }
+    
+    public List<UserData> GetFriends() {
+        return friends;
+    }
+    
+    /// <summary>
+    /// Returns the number of unique countries the user has eaten from
+    /// </summary>
+    /// <returns></returns>
     public int NumUniqueCountriesEatenFrom() {
         return uniqueCountries.Count;
     }
 
+    /// <summary>
+    /// Returns the number of unique dishes the user has eaten
+    /// </summary>
+    /// <returns></returns>
     public int NumUniqueDishesEaten() {
         return uniqueDishes.Count;
     }
 
-    public Dish FavoriteDish() {
-        return favoriteDish;
-    }
-
+    /// <summary>
+    /// Adds the passed users to the user's friends list
+    /// </summary>
+    /// <param name="users"></param>
     public void AddFriends(params UserData[] users) {
         AddFriends(users.ToList());
     }
 
+    /// <summary>
+    /// Adds the passed list of users to the user's friends list
+    /// </summary>
+    /// <param name="users"></param>
     public void AddFriends(List<UserData> users) {
         friends.AddRange(users);
     }
 
-    public List<UserData> GetFriends() {
-        return friends;
-    }
-
+    /// <summary>
+    /// Returns a random dish that the user has eaten already
+    /// </summary>
+    /// <returns></returns>
     public Dish FamiliarSuggestion() {
         if (uniqueDishes.Count == 0) {
             return null;
@@ -115,6 +164,11 @@ public class UserData {
 
     const int maxIterations = 1000;
     
+    /// <summary>
+    /// Returns a random dish that the user hasn't eaten. If it doesn't find a new dish, it returns
+    /// a random dish the user has already eaten
+    /// </summary>
+    /// <returns></returns>
     public Dish UnfamiliarSuggestion() {
         Dish result = null;
 
