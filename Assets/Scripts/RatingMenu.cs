@@ -4,10 +4,6 @@ using Codice.Client.BaseCommands.CheckIn.Progress;
 using TMPro;
 using UnityEngine;
 
-public interface RatingMenuListener {
-    void NotifyRatingChanged(int newRating);
-}
-
 public class RatingMenu : MonoBehaviour {
     Dish currentDish;
 
