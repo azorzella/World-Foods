@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Codice.Client.BaseCommands.CheckIn.Progress;
 using TMPro;
 using UnityEngine;
 

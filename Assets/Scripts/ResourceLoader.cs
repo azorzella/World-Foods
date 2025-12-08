@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 
-// TODO: This could be a regular class if it had a way of instantiating objects
 public class ResourceLoader : MonoBehaviour {
 	static ResourceLoader _i;
 
