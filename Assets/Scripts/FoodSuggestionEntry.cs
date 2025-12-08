@@ -12,7 +12,7 @@ public class FoodSuggestionEntry : MonoBehaviour {
     /// </summary>
     /// <param name="friend"></param>
     public void PopulateFriendSuggestion(UserData friend) {
-        PopulateGeneralInfo(friend.FavoriteDish());
+        PopulateGeneralInfo(friend.GetFavoriteDish());
         noteText.text = $"Recommended by {friend.GetFirstName()}";
     }
 
@@ -22,7 +22,7 @@ public class FoodSuggestionEntry : MonoBehaviour {
     /// </summary>
     /// <param name="user"></param>
     public void PopulatePersonalFavorite(UserData user) {
-        PopulateGeneralInfo(user.FavoriteDish());
+        PopulateGeneralInfo(user.GetFavoriteDish());
         noteText.text = "Your personal favorite!";
     }
 
