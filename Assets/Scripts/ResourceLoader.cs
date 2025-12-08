@@ -34,7 +34,7 @@ public class ResourceLoader : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Loads the object of the passed name and then instantiates it at the passed postition
+	/// Loads the object of the passed name and then instantiates it at the passed position
 	/// with the passed rotation
 	/// </summary>
 	/// <param name="objectName"></param>
