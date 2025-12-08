@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+// TODO: Documentation by Chanel
 
 // {
     public class AddFriends : MonoBehaviour

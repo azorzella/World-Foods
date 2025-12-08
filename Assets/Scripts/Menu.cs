@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: Documentation by Chanel
 public class Menu : MonoBehaviour {
     public List<GameObject> menus;
     int selectedIndex = 0;
