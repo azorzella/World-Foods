@@ -65,6 +65,8 @@ public class WorldMapVisualization : MonoBehaviour {
         PopulateCurrentUserWithTestData();
 
         ForceNotifyListeners();
+        
+        FindFirstObjectByType<SocialView>().Initialize(currentUser);
     }
 
     /// <summary>
