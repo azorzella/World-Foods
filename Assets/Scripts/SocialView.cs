@@ -5,9 +5,12 @@ using UnityEngine.UI;
 
 public class SocialView : MonoBehaviour, MenuListener
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public TextMeshProUGUI greeting;
 
+    /// <summary>
+    /// Initializes welcome text, friend and allergy lists
+    /// </summary>
+    /// <param name="userData"></param>
     public void Initialize(UserData userData)
     {
         FindFirstObjectByType<Menu>().RegisterListener(this);
@@ -25,6 +28,9 @@ public class SocialView : MonoBehaviour, MenuListener
 
     private UserData currentUser;
 
+    /// <summary>
+    /// Adds an allergy to user's allergies
+    /// </summary>
     public void AddAllergy()
     {
         if(inputField.text != string.Empty)
@@ -41,6 +47,10 @@ public class SocialView : MonoBehaviour, MenuListener
     readonly List<GameObject> entries = new();
     readonly List<GameObject> allergyEntries = new();
 
+    /// <summary>
+    /// Populates user's friend entries.
+    /// </summary>
+    /// <param name="userData"></param>
     public void PopulateEntries(UserData userData)
     {
         ClearAllergyEntries();
@@ -71,6 +81,9 @@ public class SocialView : MonoBehaviour, MenuListener
 
     }
 
+    /// <summary>
+    /// Clears friend list entries
+    /// </summary>
     void ClearEntries()
     {
         while (entries.Count > 0)
@@ -80,6 +93,9 @@ public class SocialView : MonoBehaviour, MenuListener
         }
     }
     
+    /// <summary>
+    /// Clears allergy list entries
+    /// </summary>
     void ClearAllergyEntries()
     {
         while (allergyEntries.Count > 0)
@@ -92,7 +108,11 @@ public class SocialView : MonoBehaviour, MenuListener
     public RectTransform allergyParentEntriesTo;
     VerticalLayoutGroup allergyVerticalLayoutGroup;
     readonly List<string> allergies = new();
-
+    
+    /// <summary>
+    /// Populates user's allergy list
+    /// </summary>
+    /// <param name="userData"></param>
     public void PopulateAllergies(UserData userData)
     {
         ClearEntries();
@@ -121,19 +141,20 @@ public class SocialView : MonoBehaviour, MenuListener
         }
     }
 
-    // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        public void NotifyMenuStateChanged(int currentIndex)
-        {
-            gameObject.SetActive(currentIndex == 2);
-        }
+    /// <summary>
+    /// sets the social view tab to active
+    /// </summary>
+    /// <param name="currentIndex"></param>
+    public void NotifyMenuStateChanged(int currentIndex)
+    {
+        gameObject.SetActive(currentIndex == 2);
+    }
 
     public TMP_InputField inputField;
-
+    
+    /// <summary>
+    /// toggles input field off and on
+    /// </summary>
     public void toggleInputField()
     {
         inputField.gameObject.SetActive(!inputField.gameObject.activeSelf);

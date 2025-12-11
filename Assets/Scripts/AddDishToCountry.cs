@@ -4,7 +4,6 @@ using System.Linq;
 using UnityEngine;
 using TMPro;
 
-// TODO: Documentation by Chanel
 public class AddDishToCountry : MonoBehaviour {
     TextMeshProUGUI Button;
 
@@ -18,10 +17,17 @@ public class AddDishToCountry : MonoBehaviour {
     public TMP_Dropdown dropdown;
     public TMP_Dropdown countryDropdown;
 
+    /// <summary>
+    /// sets the country dropdown to false at start
+    /// </summary>
     private void Start() {
         countryDropdown.gameObject.SetActive(false);
     }
-
+    
+    /// <summary>
+    /// shows filtered dish results based on text entry. Toggles custom dish add if no dish matches found.
+    /// </summary>
+    /// <param name="entry"></param>
     public void EntryFilter(string entry) {
         countryDropdown.gameObject.SetActive(false);
 
@@ -52,7 +58,10 @@ public class AddDishToCountry : MonoBehaviour {
         dropdown.ClearOptions();
         dropdown.AddOptions(filteredDishNames);
     }
-
+    
+    /// <summary>
+    /// populates country dropdown
+    /// </summary>
     void PopulateCountryDropdown() {
         countryDropdown.ClearOptions();
 
@@ -65,15 +74,26 @@ public class AddDishToCountry : MonoBehaviour {
 
         countryDropdown.AddOptions(countryNames);
     }
-
+    
+    /// <summary>
+    /// saves selected dish from filtered results
+    /// </summary>
+    /// <param name="index"></param>
     public void DishSelected(int index) {
         dish = filteredResults[index];
     }
 
+    /// <summary>
+    /// saves selected country
+    /// </summary>
+    /// <param name="index"></param>
     public void countrySelected(int index) {
         country_index = index;
     }
 
+    /// <summary>
+    /// logs a dish
+    /// </summary>
     public void LogDish() {
         if (dish == null) {
             return;

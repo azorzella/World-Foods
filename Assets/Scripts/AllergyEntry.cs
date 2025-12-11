@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class AllergyEntry : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
+    /// <summary>
+    /// initiallizes an allergy object
+    /// </summary>
+    /// <param name="allergy"></param>
     public void Initialize(string allergy)
     {
         GetComponentInChildren<TextMeshProUGUI>().text = allergy;
