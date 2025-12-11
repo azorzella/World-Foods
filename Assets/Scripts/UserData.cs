@@ -8,6 +8,7 @@ public class UserData {
     readonly string username;
     // readonly string birthday;
     readonly List<UserData> friends = new();
+    readonly List<string> allergies = new();
     
     readonly Dictionary<Dish, int> uniqueDishes = new();
     readonly Dictionary<string, List<Dish>> uniqueCountries = new();
@@ -29,8 +30,14 @@ public class UserData {
         firstName = fullName.Split(' ')[0];
 
         AddFriends(friends);
+        
     }
 
+    public void AddAllergy(string allergy)
+    {
+        allergies.Add(allergy);
+    }
+    
     /// <summary>
     /// Returns the dictionary of unique dishes to times eaten
     /// </summary>
@@ -107,6 +114,11 @@ public class UserData {
     public string GetFirstName() {
         return firstName;
     }
+
+    public string GetFullName()
+    {
+        return fullName;
+    }
     
     public Dish GetFavoriteDish() {
         return favoriteDish;
@@ -115,7 +127,11 @@ public class UserData {
     public List<UserData> GetFriends() {
         return friends;
     }
-    
+
+    public List<string> GetAllergies()
+    {
+        return allergies;
+    }
     /// <summary>
     /// Returns the number of unique countries the user has eaten from
     /// </summary>
