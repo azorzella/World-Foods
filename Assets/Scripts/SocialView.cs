@@ -39,7 +39,6 @@ public class SocialView : MonoBehaviour, MenuListener
             inputField.text = string.Empty;
             PopulateAllergies(currentUser);
         }
-        
     }
 
     public RectTransform parentEntriesTo;
@@ -129,15 +128,15 @@ public class SocialView : MonoBehaviour, MenuListener
         }
 
         int allergyCount = entries.Count;
-
+        int numAllergyEntries = allergyCount + 1;
+        
         if (allergyCount > 0)
         {
             Vector2 newSize = new Vector2(
                 allergyParentEntriesTo.sizeDelta.x,
-                newEntry.GetComponent<RectTransform>().sizeDelta.y * allergyCount +
-                verticalLayoutGroup.spacing * allergyCount);
+                (newEntry.GetComponent<RectTransform>().sizeDelta.y +
+                verticalLayoutGroup.spacing) * numAllergyEntries);
             allergyParentEntriesTo.sizeDelta = newSize;
-
         }
     }
 
