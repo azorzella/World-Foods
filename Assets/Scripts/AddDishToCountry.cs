@@ -11,6 +11,8 @@ public class AddDishToCountry : MonoBehaviour {
     readonly List<string> countryNames = new();
 
     Dish dish;
+
+    bool enteringCustomDish = false;
     int country_index = -1;
 
     public TMP_InputField dishNameInput;
@@ -35,8 +37,6 @@ public class AddDishToCountry : MonoBehaviour {
     /// <param name="entry"></param>
     public void EntryFilter(string entry) {
         countryDropdown.gameObject.SetActive(false);
-        country_index = -1;
-
         filteredResults.Clear();
 
         if (entry.Length < 3) {
@@ -59,11 +59,17 @@ public class AddDishToCountry : MonoBehaviour {
             }
             
             countryDropdown.gameObject.SetActive(true);
+            
+            enteringCustomDish = true;
+            
+            countryDropdown.value = country_index;
         } else {
             dish = filteredResults[0];
             
             dropdown.ClearOptions();
             dropdown.AddOptions(filteredDishNames);
+            
+            enteringCustomDish = false;
         }
     }
     
@@ -109,7 +115,7 @@ public class AddDishToCountry : MonoBehaviour {
             return;
         }
             
-        if (country_index < 0) {
+        if (!enteringCustomDish) {
             FindFirstObjectByType<WorldMapVisualization>().LogDish(dish);
         } else {
             Dish existingDish = DishCatalogue.i.GetDishByName(dishNameInput.text);
@@ -119,10 +125,11 @@ public class AddDishToCountry : MonoBehaviour {
                 return;
             }
             
-            Dish newDish = new(dishNameInput.text, DishCatalogue.isoCodes.ElementAt(country_index).Value);
-            visualization.LogDish(newDish);
-            DishCatalogue.i.AddDishToCatalogue(newDish);
-            country_index = -1;
+            dish = new(dishNameInput.text, DishCatalogue.isoCodes.ElementAt(country_index).Value);
+            visualization.LogDish(dish);
+            DishCatalogue.i.AddDishToCatalogue(dish);
+            
+            enteringCustomDish = false;
         }
     }
 }
