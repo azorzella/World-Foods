@@ -17,11 +17,16 @@ public class AddDishToCountry : MonoBehaviour {
     public TMP_Dropdown dropdown;
     public TMP_Dropdown countryDropdown;
 
+    WorldMapVisualization visualization;
+
+    bool countryDropdownPopulated = false;
+    
     /// <summary>
     /// sets the country dropdown to false at start
     /// </summary>
-    private void Start() {
+    void Start() {
         countryDropdown.gameObject.SetActive(false);
+        visualization = FindFirstObjectByType<WorldMapVisualization>();
     }
     
     /// <summary>
@@ -30,6 +35,7 @@ public class AddDishToCountry : MonoBehaviour {
     /// <param name="entry"></param>
     public void EntryFilter(string entry) {
         countryDropdown.gameObject.SetActive(false);
+        country_index = -1;
 
         filteredResults.Clear();
 
@@ -40,23 +46,25 @@ public class AddDishToCountry : MonoBehaviour {
         List<string> filteredDishNames = new();
 
         foreach (var d in DishCatalogue.dishes) {
-            if (d.GetName().ToLower().Contains(entry.ToLower()) || d.GetAlternativeName().ToLower().Contains(entry.ToLower())) {
+            if (d.GetName().ToLower().Contains(entry.ToLower()) || 
+                d.GetAlternativeName().ToLower().Contains(entry.ToLower())) {
                 filteredResults.Add(d);
                 filteredDishNames.Add(d.GetName());
             }
         }
 
-        if (filteredResults.Count == 0) {
+        if (filteredResults.Count <= 0) {
+            if (!countryDropdownPopulated) {
+                PopulateCountryDropdown();
+            }
+            
             countryDropdown.gameObject.SetActive(true);
-
-            PopulateCountryDropdown();
-        }
-        else {
+        } else {
             dish = filteredResults[0];
+            
+            dropdown.ClearOptions();
+            dropdown.AddOptions(filteredDishNames);
         }
-
-        dropdown.ClearOptions();
-        dropdown.AddOptions(filteredDishNames);
     }
     
     /// <summary>
@@ -73,6 +81,8 @@ public class AddDishToCountry : MonoBehaviour {
         }
 
         countryDropdown.AddOptions(countryNames);
+        
+        countryDropdownPopulated = true;
     }
     
     /// <summary>
@@ -102,9 +112,17 @@ public class AddDishToCountry : MonoBehaviour {
         if (country_index < 0) {
             FindFirstObjectByType<WorldMapVisualization>().LogDish(dish);
         } else {
+            Dish existingDish = DishCatalogue.i.GetDishByName(dishNameInput.text);
+            
+            if (existingDish != null) {
+                visualization.LogDish(existingDish);
+                return;
+            }
+            
             Dish newDish = new(dishNameInput.text, DishCatalogue.isoCodes.ElementAt(country_index).Value);
-            FindFirstObjectByType<WorldMapVisualization>().LogDish(newDish);
+            visualization.LogDish(newDish);
             DishCatalogue.i.AddDishToCatalogue(newDish);
+            country_index = -1;
         }
     }
 }

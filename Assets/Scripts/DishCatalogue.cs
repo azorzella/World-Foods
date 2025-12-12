@@ -35,6 +35,17 @@ public class DishCatalogue {
 	const string latinPattern = @"^{Script=Latin}*$";
 
 	/// <summary>
+	/// Returns the first dish in dishes that the function finds with the name 'dishName'
+	/// </summary>
+	/// <param name="dishName"></param>
+	/// <returns></returns>
+	public Dish GetDishByName(string dishName) {
+		Dish result = null;
+
+		return result;
+	}
+	
+	/// <summary>
 	/// Adds the passed dish to the catalogue
 	/// </summary>
 	/// <param name="dish"></param>
